@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hexaware.medicalbillingsystem.dto.PatientsDTO;
 import com.hexaware.medicalbillingsystem.entities.Patients;
+import com.hexaware.medicalbillingsystem.exceptions.PatientIllegalArgumentsException;
 import com.hexaware.medicalbillingsystem.exceptions.PatientNotFoundException;
 import com.hexaware.medicalbillingsystem.service.IPatientsService;
 
@@ -33,7 +34,13 @@ public class PatientsRestController {
 	@PostMapping("/add/new")
 	public Patients insertPatients(@RequestBody PatientsDTO patientDTO) {
 
-		return service.addPatients(patientDTO);
+		Patients patient=service.addPatients(patientDTO);
+		
+		if(patient.getPatientName() ==null || patient.getPatientGender() ==null)
+		{
+			throw new PatientIllegalArgumentsException(HttpStatus.BAD_REQUEST, "You have entered Invalid values.");
+		}
+		return patient;
 	}
 
 	@PutMapping("/update/patient")
