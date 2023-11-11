@@ -13,7 +13,7 @@ public class InsurancePlansDTO {
 	private double planCoverAmount;
 	private double planEmi;
 	private String planDetails;
-	Set<InsuranceClaims> claims=new HashSet<>();
+	Set<InsuranceClaims> claims;
 	public int getPlanId() {
 		return planId;
 	}
@@ -56,6 +56,7 @@ public class InsurancePlansDTO {
 	public void setClaims(Set<InsuranceClaims> claims) {
 		this.claims = claims;
 	}
+	
 	
 	
 }

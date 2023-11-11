@@ -2,11 +2,10 @@ package com.hexaware.medicalbillingsystem.entities;
 
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -26,7 +25,7 @@ public class InsurancePlans implements Serializable {
 	private double planEmi;
 	private String planDetails;
 	
-	@OneToMany(fetch = FetchType.LAZY,mappedBy = "plans")
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "plans")
 	Set<InsuranceClaims> claims=new HashSet<>();
 	public InsurancePlans() {
 		super();

@@ -5,31 +5,32 @@ import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
+import com.hexaware.medicalbillingsystem.dto.InsuranceCompanyDTO;
 import com.hexaware.medicalbillingsystem.entities.InsuranceCompany;
 
 @Service
-public class InsuranceCompanyService implements IInsuranceCompanyService {
+public class InsuranceCompanyServiceImpl implements IInsuranceCompanyService {
 
 	@Override
-	public int addCompany(InsuranceCompany company) {
+	public InsuranceCompany addCompany(InsuranceCompanyDTO companydto) {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
 	@Override
-	public int updateCompany(InsuranceCompany company) {
+	public InsuranceCompany updateCompany(InsuranceCompanyDTO companydto) {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
 	@Override
-	public int deleteCompany(int companyId) {
+	public void deleteCompany(int companyId) {
 		// TODO Auto-generated method stub
-		return 0;
+		
 	}
 
 	@Override
-	public InsuranceCompany getCompanyByName(String companyName) {
+	public InsuranceCompanyDTO getCompanyByName(String companyName) {
 		// TODO Auto-generated method stub
 		return null;
 	}

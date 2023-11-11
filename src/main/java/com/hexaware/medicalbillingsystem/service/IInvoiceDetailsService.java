@@ -8,6 +8,7 @@ public interface IInvoiceDetailsService {
 	
 	
 	public Set<InvoiceDetails> generateInvoice();
-	public String invoiceGenerated(int invoiceId);
+	
+	public void invoiceGenerated(int invoiceId);
 
 }

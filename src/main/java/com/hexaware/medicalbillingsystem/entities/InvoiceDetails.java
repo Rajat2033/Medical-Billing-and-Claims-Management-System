@@ -24,7 +24,7 @@ public class InvoiceDetails  {
 	private LocalDate invoicedueDate;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "patient_Name" )
+	@JoinColumn(name = "patient_Id" )
 	private Patients patient;
 	
 	@NotNull

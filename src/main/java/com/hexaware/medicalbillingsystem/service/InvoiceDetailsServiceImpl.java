@@ -4,9 +4,12 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.springframework.stereotype.Service;
+
 import com.hexaware.medicalbillingsystem.entities.InvoiceDetails;
 
-public class InvoiceDetailsService implements IInvoiceDetailsService{
+@Service
+public class InvoiceDetailsServiceImpl implements IInvoiceDetailsService{
 
 	@Override
 	public Set<InvoiceDetails> generateInvoice() {
@@ -15,9 +18,9 @@ public class InvoiceDetailsService implements IInvoiceDetailsService{
 	}
 
 	@Override
-	public String invoiceGenerated(int invoiceId) {
+	public void invoiceGenerated(int invoiceId) {
 		// TODO Auto-generated method stub
-		return null;
+	
 	}
 
 }

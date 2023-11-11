@@ -32,7 +32,7 @@ public class Patients {
 	private String patientDisease;
 	
 	@OneToOne
-	@JoinColumn(name = "plan_name", referencedColumnName = "planName" )
+	@JoinColumn(name = "planId", referencedColumnName = "planId" )
 	private InsurancePlans plans;
 
 	public Patients() {

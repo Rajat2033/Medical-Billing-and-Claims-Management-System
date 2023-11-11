@@ -2,17 +2,18 @@ package com.hexaware.medicalbillingsystem.service;
 
 import java.util.Set;
 
+import com.hexaware.medicalbillingsystem.dto.InsurancePlansDTO;
 import com.hexaware.medicalbillingsystem.entities.InsurancePlans;
 
 public interface IInsurancePlansService {
 	
-	public int addInsurancePlan(InsurancePlans plans);
+	public InsurancePlans addInsurancePlan(InsurancePlansDTO plansdto);
 	
-	public int updateInsurancePlans(InsurancePlans plans);
+	public InsurancePlans updateInsurancePlans(InsurancePlansDTO plansdto);
 	 
-	public int deleteInsurancePlan(int planId);
+	public void deleteInsurancePlan(int planId);
 	
-	public InsurancePlans getPlanByName(String planName);
+	public InsurancePlansDTO getPlanByName(String planName);
 	
 	public Set<InsurancePlans> getAllPlans();
 	
