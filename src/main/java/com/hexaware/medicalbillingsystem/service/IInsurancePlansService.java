@@ -1,6 +1,7 @@
 package com.hexaware.medicalbillingsystem.service;
 
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
 
 import com.hexaware.medicalbillingsystem.dto.InsurancePlansDTO;
 import com.hexaware.medicalbillingsystem.entities.InsurancePlans;
@@ -13,8 +14,8 @@ public interface IInsurancePlansService {
 	 
 	public void deleteInsurancePlan(int planId);
 	
-	public InsurancePlansDTO getPlanByName(String planName);
+	public InsurancePlansDTO  getPlanByName(String planName);
 	
-	public Set<InsurancePlans> getAllPlans();
+	public List<InsurancePlans> getAllPlans();
 	
 }

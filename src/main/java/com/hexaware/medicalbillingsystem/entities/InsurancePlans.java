@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
@@ -25,6 +26,9 @@ public class InsurancePlans implements Serializable {
 	private double planEmi;
 	private String planDetails;
 	
+	@OneToOne(mappedBy = "plans")
+	private Patients patient ;
+	
 	@OneToMany(cascade = CascadeType.ALL,mappedBy = "plans")
 	Set<InsuranceClaims> claims=new HashSet<>();
 	public InsurancePlans() {
@@ -32,7 +36,7 @@ public class InsurancePlans implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 	public InsurancePlans(int planId, @NotBlank String planName, String planType, double planCoverAmount,
-			double planEmi, String planDetails, Set<InsuranceClaims> claims) {
+			double planEmi, String planDetails, Patients patient, Set<InsuranceClaims> claims) {
 		super();
 		this.planId = planId;
 		this.planName = planName;
@@ -40,6 +44,7 @@ public class InsurancePlans implements Serializable {
 		this.planCoverAmount = planCoverAmount;
 		this.planEmi = planEmi;
 		this.planDetails = planDetails;
+		this.patient = patient;
 		this.claims = claims;
 	}
 	public int getPlanId() {
@@ -78,6 +83,12 @@ public class InsurancePlans implements Serializable {
 	public void setPlanDetails(String planDetails) {
 		this.planDetails = planDetails;
 	}
+	public Patients getPatient() {
+		return patient;
+	}
+	public void setPatient(Patients patient) {
+		this.patient = patient;
+	}
 	public Set<InsuranceClaims> getClaims() {
 		return claims;
 	}
@@ -88,7 +99,7 @@ public class InsurancePlans implements Serializable {
 	public String toString() {
 		return "InsurancePlans [planId=" + planId + ", planName=" + planName + ", planType=" + planType
 				+ ", planCoverAmount=" + planCoverAmount + ", planEmi=" + planEmi + ", planDetails=" + planDetails
-				+ ", claims=" + claims + "]";
+				+ ", patient=" + patient + ", claims=" + claims + "]";
 	}
 	
 	

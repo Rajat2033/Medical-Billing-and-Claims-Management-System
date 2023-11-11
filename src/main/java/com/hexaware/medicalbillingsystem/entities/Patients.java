@@ -1,5 +1,6 @@
 package com.hexaware.medicalbillingsystem.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,7 +18,7 @@ public class Patients {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long patientId;
-	@NotNull
+	@NotBlank
 	private String patientName;
 	@Email
 	private String patientEmail;
@@ -31,8 +32,9 @@ public class Patients {
 	@NotBlank
 	private String patientDisease;
 	
-	@OneToOne
-	@JoinColumn(name = "planId", referencedColumnName = "planId" )
+	@OneToOne(cascade = CascadeType.ALL)
+
+	@JoinColumn(name = "planId")
 	private InsurancePlans plans;
 
 	public Patients() {
@@ -40,7 +42,7 @@ public class Patients {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Patients(long patientId, @NotNull String patientName, @Email String patientEmail,
+	public Patients(long patientId, @NotBlank String patientName, @Email String patientEmail,
 			@Pattern(regexp = "^[a-zA-Z0-9]{8}", message = "Letter must be 8") String patientPassword,
 			String patientDOB, @NotBlank String patientGender, long patientContact, String patientAddress,
 			@NotBlank String patientDisease, InsurancePlans plans) {

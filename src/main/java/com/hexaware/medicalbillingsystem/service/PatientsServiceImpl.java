@@ -27,7 +27,7 @@ public class PatientsServiceImpl implements IPatientsService {
 		patient.setPatientContact(patientsdto.getPatientContact());
 		patient.setPatientAddress(patientsdto.getPatientAddress());
 		patient.setPatientDisease(patientsdto.getPatientDisease());
-		patient.setPlans(new InsurancePlans() );
+		patient.setPlans(patientsdto.getPlans() );
 		return repository.save(patient);
 	}
 

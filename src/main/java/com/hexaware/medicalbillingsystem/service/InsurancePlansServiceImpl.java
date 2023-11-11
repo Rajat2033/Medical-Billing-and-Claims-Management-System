@@ -1,6 +1,8 @@
 package com.hexaware.medicalbillingsystem.service;
 
 import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,26 +48,41 @@ public class InsurancePlansServiceImpl implements IInsurancePlansService{
 		return repository.save(plans);
 	}
 
-	@Override
-	public InsurancePlans updateInsurancePlans(InsurancePlansDTO plansdto) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public InsurancePlans updateInsurancePlans(InsurancePlansDTO plansdto) {
+//		// TODO Auto-generated method stub
+//		return ;
+//	}
 
 	@Override
 	public void deleteInsurancePlan(int planId) {
-		// TODO Auto-generated method stub
+		
+		repository.deleteById(planId);
 		
 	}
 
 	@Override
 	public InsurancePlansDTO getPlanByName(String planName) {
-		// TODO Auto-generated method stub
-		return null;
+		InsurancePlans plans=repository.findByPlanName(planName).orElse(new InsurancePlans());
+		InsurancePlansDTO planDTO=new InsurancePlansDTO();
+		planDTO.setPlanName(plans.getPlanName());
+		planDTO.setPlanType(plans.getPlanType());
+		planDTO.setPlanCoverAmount(plans.getPlanCoverAmount());
+		planDTO.setPlanEmi(plans.getPlanEmi());
+		planDTO.setPlanEmi(plans.getPlanEmi());
+		planDTO.setClaims(plans.getClaims());
+		return planDTO;
+		
 	}
 
 	@Override
-	public Set<InsurancePlans> getAllPlans() {
+	public List<InsurancePlans> getAllPlans() {
+		// TODO Auto-generated method stub
+		return repository.findAll();
+	}
+
+	@Override
+	public InsurancePlans updateInsurancePlans(InsurancePlansDTO plansdto) {
 		// TODO Auto-generated method stub
 		return null;
 	}

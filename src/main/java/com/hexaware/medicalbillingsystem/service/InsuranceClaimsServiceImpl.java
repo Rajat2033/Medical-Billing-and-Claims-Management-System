@@ -50,6 +50,16 @@ public class InsuranceClaimsServiceImpl implements IInsuranceClaimsService {
 		return claimdto;
 	}
 
+	@Override
+	public InsuranceClaims insertClaims(InsuranceClaimsDTO claimDTO) {
+		InsuranceClaims claims=new InsuranceClaims();
+		claims.setClaimAmount(claimDTO.getClaimAmount());
+		claims.setClaimStatus(claimDTO.getClaimStatus());
+		claims.setPatient(claimDTO.getPatient());
+		claims.setPlans(claimDTO.getPlans());
+		return repository.save(claims);
+	}
+
 	
 	
 }
