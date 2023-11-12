@@ -29,20 +29,18 @@ public class InsurancePlansServiceImpl implements IInsurancePlansService{
 		plans.setPlanCoverAmount(plansdto.getPlanCoverAmount());
 		plans.setPlanEmi(plansdto.getPlanEmi());
 		plans.setPlanDetails(plansdto.getPlanDetails());
-		
-
-        Set<InsuranceClaims> claimSet = new HashSet<>();
-        for (InsuranceClaims claimdto : plans.getClaims()) {
-            InsuranceClaims claims = new InsuranceClaims();
-            claims.setClaimAmount(claimdto.getClaimAmount());
-            claims.setClaimStatus(claimdto.getClaimStatus());
-            claims.setPatient(claimdto.getPatient());
-            claims.setPlans(plans);
-           
-            claimSet.add(claimdto);
-        }
-
-        plans.setClaims(claimSet);
+		/*
+		 * 
+		 * Set<InsuranceClaims> claimSet = new HashSet<>(); for (InsuranceClaims
+		 * claimdto : plansdto.getClaims()) { InsuranceClaims claims = new
+		 * InsuranceClaims(); claims.setClaimAmount(claimdto.getClaimAmount());
+		 * claims.setClaimStatus(claimdto.getClaimStatus());
+		 * claims.setPatient(claimdto.getPatient()); claims.setPlans(plans);
+		 * 
+		 * claimSet.add(claimdto); }
+		 * 
+		 * plans.setClaims(claimSet);
+		 */
 		
 		
 		return repository.save(plans);
