@@ -25,16 +25,18 @@ public class InsurancePlans implements Serializable {
 	private double planCoverAmount;
 	private double planEmi;
 	private String planDetails;
-	
+
 	@OneToOne(mappedBy = "plans")
-	private Patients patient ;
-	
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "plans")
-	Set<InsuranceClaims> claims=new HashSet<>();
+	private Patients patient;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "plans")
+	Set<InsuranceClaims> claims = new HashSet<>();
+
 	public InsurancePlans() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	public InsurancePlans(int planId, @NotBlank String planName, String planType, double planCoverAmount,
 			double planEmi, String planDetails, Patients patient, Set<InsuranceClaims> claims) {
 		super();
@@ -47,61 +49,76 @@ public class InsurancePlans implements Serializable {
 		this.patient = patient;
 		this.claims = claims;
 	}
+
 	public int getPlanId() {
 		return planId;
 	}
+
 	public void setPlanId(int planId) {
 		this.planId = planId;
 	}
+
 	public String getPlanName() {
 		return planName;
 	}
+
 	public void setPlanName(String planName) {
 		this.planName = planName;
 	}
+
 	public String getPlanType() {
 		return planType;
 	}
+
 	public void setPlanType(String planType) {
 		this.planType = planType;
 	}
+
 	public double getPlanCoverAmount() {
 		return planCoverAmount;
 	}
+
 	public void setPlanCoverAmount(double planCoverAmount) {
 		this.planCoverAmount = planCoverAmount;
 	}
+
 	public double getPlanEmi() {
 		return planEmi;
 	}
+
 	public void setPlanEmi(double planEmi) {
 		this.planEmi = planEmi;
 	}
+
 	public String getPlanDetails() {
 		return planDetails;
 	}
+
 	public void setPlanDetails(String planDetails) {
 		this.planDetails = planDetails;
 	}
+
 	public Patients getPatient() {
 		return patient;
 	}
+
 	public void setPatient(Patients patient) {
 		this.patient = patient;
 	}
+
 	public Set<InsuranceClaims> getClaims() {
 		return claims;
 	}
+
 	public void setClaims(Set<InsuranceClaims> claims) {
 		this.claims = claims;
 	}
+
 	@Override
 	public String toString() {
 		return "InsurancePlans [planId=" + planId + ", planName=" + planName + ", planType=" + planType
 				+ ", planCoverAmount=" + planCoverAmount + ", planEmi=" + planEmi + ", planDetails=" + planDetails
 				+ ", patient=" + patient + ", claims=" + claims + "]";
 	}
-	
-	
-	
+
 }

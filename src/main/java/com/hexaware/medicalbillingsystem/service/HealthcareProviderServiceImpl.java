@@ -34,6 +34,7 @@ public class HealthcareProviderServiceImpl implements IHealthcareProviderService
 	public HealthcareProvider updateProvider(HealthcareProviderDTO providerdto) {
 
 		HealthcareProvider provider = new HealthcareProvider();
+		provider.setProviderId(providerdto.getProviderId());
 		provider.setProviderName(providerdto.getProviderName());
 		provider.setProviderPassword(providerdto.getProviderPassword());
 		provider.setProviderEmail(providerdto.getProviderEmail());

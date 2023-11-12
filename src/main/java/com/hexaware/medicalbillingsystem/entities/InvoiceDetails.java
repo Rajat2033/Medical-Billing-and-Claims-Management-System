@@ -15,8 +15,8 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
-public class InvoiceDetails  {
-	
+public class InvoiceDetails {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int invoiceId;
@@ -24,14 +24,14 @@ public class InvoiceDetails  {
 	private LocalDate invoicedueDate;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "patient_Id" )
+	@JoinColumn(name = "patient_Id")
 	private Patients patient;
-	
+
 	@NotNull
-	
+
 	private int invoiceTax;
 	private double invoiceTotalAmount;
-	
+
 	public InvoiceDetails() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -102,8 +102,5 @@ public class InvoiceDetails  {
 		this.invoiceTax = invoiceTax;
 		this.invoiceTotalAmount = invoiceTotalAmount;
 	}
-
-	
-
 
 }

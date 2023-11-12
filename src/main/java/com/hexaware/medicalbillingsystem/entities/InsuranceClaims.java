@@ -21,71 +21,59 @@ public class InsuranceClaims implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long claimId;
 	private double claimAmount;
-	private String claimStatus="Pending";
+	private String claimStatus;
 	@OneToOne
-	@JoinColumn(name = "patient_Id", referencedColumnName = "patientId" )
+	@JoinColumn(name = "patient_Id", referencedColumnName = "patientId")
 	private Patients patient;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="planId")
+	@JoinColumn(name = "planId")
 	private InsurancePlans plans;
-	
-	
+
 	public InsuranceClaims() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-
 	public long getClaimId() {
 		return claimId;
 	}
-
 
 	public void setClaimId(long claimId) {
 		this.claimId = claimId;
 	}
 
-
 	public double getClaimAmount() {
 		return claimAmount;
 	}
-
 
 	public void setClaimAmount(double claimAmount) {
 		this.claimAmount = claimAmount;
 	}
 
-
 	public String getClaimStatus() {
 		return claimStatus;
 	}
-
 
 	public void setClaimStatus(String claimStatus) {
 		this.claimStatus = claimStatus;
 	}
 
-
 	public Patients getPatient() {
 		return patient;
 	}
-
 
 	public void setPatient(Patients patient) {
 		this.patient = patient;
 	}
 
-
 	public InsurancePlans getPlans() {
 		return plans;
 	}
 
-
 	public void setPlans(InsurancePlans plans) {
 		this.plans = plans;
 	}
-
 
 	public InsuranceClaims(long claimId, double claimAmount, String claimStatus, Patients patient,
 			InsurancePlans plans) {
@@ -96,5 +84,5 @@ public class InsuranceClaims implements Serializable {
 		this.patient = patient;
 		this.plans = plans;
 	}
-	
+
 }

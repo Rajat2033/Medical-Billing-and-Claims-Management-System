@@ -31,9 +31,8 @@ public class Patients {
 	private String patientAddress;
 	@NotBlank
 	private String patientDisease;
-	
-	@OneToOne(cascade = CascadeType.ALL)
 
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "planId")
 	private InsurancePlans plans;
 
@@ -146,10 +145,5 @@ public class Patients {
 				+ patientGender + ", patientContact=" + patientContact + ", patientAddress=" + patientAddress
 				+ ", patientDisease=" + patientDisease + ", plans=" + plans + "]";
 	}
-
-	
-	
-	
-	
 
 }

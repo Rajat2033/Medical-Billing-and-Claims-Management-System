@@ -13,16 +13,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hexaware.medicalbillingsystem.dto.InsurancePlansDTO;
 import com.hexaware.medicalbillingsystem.dto.PatientsDTO;
 import com.hexaware.medicalbillingsystem.entities.Patients;
 import com.hexaware.medicalbillingsystem.exceptions.PatientIllegalArgumentsException;
 import com.hexaware.medicalbillingsystem.exceptions.PatientNotFoundException;
+import com.hexaware.medicalbillingsystem.exceptions.PlanNotFoundException;
+import com.hexaware.medicalbillingsystem.service.IInsurancePlansService;
 import com.hexaware.medicalbillingsystem.service.IPatientsService;
 
 @RestController
 @RequestMapping("/api/patients")
 public class PatientsRestController {
 
+	@Autowired
+	IInsurancePlansService planService;
 	@Autowired
 	IPatientsService service;
 
@@ -34,10 +39,9 @@ public class PatientsRestController {
 	@PostMapping("/add/new")
 	public Patients insertPatients(@RequestBody PatientsDTO patientDTO) {
 
-		Patients patient=service.addPatients(patientDTO);
-		
-		if(patient.getPatientName() ==null || patient.getPatientGender() ==null)
-		{
+		Patients patient = service.addPatients(patientDTO);
+
+		if (patient.getPatientName() == null || patient.getPatientGender() == null) {
 			throw new PatientIllegalArgumentsException(HttpStatus.BAD_REQUEST, "You have entered Invalid values.");
 		}
 		return patient;
@@ -69,5 +73,15 @@ public class PatientsRestController {
 	@GetMapping("/get/allPatients")
 	public List<Patients> getAllPatients() {
 		return service.getAllPatients();
+	}
+
+	@GetMapping("/searchplanbyname/{planName}")
+	public InsurancePlansDTO getPlanByNamee(@PathVariable String planName) {
+		InsurancePlansDTO planDTO = planService.getPlanByName(planName);
+		if (planDTO.getPlanName() == null) {
+			throw new PlanNotFoundException(HttpStatus.NO_CONTENT,
+					"There is no plan with name " + planName + " ! Kindly Add it");
+		}
+		return planDTO;
 	}
 }

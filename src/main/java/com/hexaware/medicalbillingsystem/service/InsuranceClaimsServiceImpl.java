@@ -1,5 +1,8 @@
 package com.hexaware.medicalbillingsystem.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +17,7 @@ public class InsuranceClaimsServiceImpl implements IInsuranceClaimsService {
 
 	@Autowired
 	InsuranceClaimsRepository repository;
-	@Override
-	public InsuranceClaims verifyPatientStatus(Patients patient) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public String approveClaim(int claimid) {
@@ -58,6 +57,22 @@ public class InsuranceClaimsServiceImpl implements IInsuranceClaimsService {
 		claims.setPatient(claimDTO.getPatient());
 		claims.setPlans(claimDTO.getPlans());
 		return repository.save(claims);
+	}
+
+	@Override
+	public InsuranceClaims updateClaimStatus(InsuranceClaimsDTO claimsDTO) {
+		InsuranceClaims claims=new InsuranceClaims();
+		claims.setClaimAmount(claimsDTO.getClaimAmount());
+		claims.setClaimStatus(claimsDTO.getClaimStatus());
+		claims.setPatient(claimsDTO.getPatient());
+		claims.setPlans(claimsDTO.getPlans());
+		return repository.save(claims);
+	}
+
+	@Override
+	public List<InsuranceClaims> getAllInsuranceClaims() {
+		// TODO Auto-generated method stub
+		return repository.findAll();
 	}
 
 	

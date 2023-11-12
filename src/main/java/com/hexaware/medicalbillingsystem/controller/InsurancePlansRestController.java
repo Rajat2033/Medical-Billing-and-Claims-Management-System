@@ -22,49 +22,40 @@ import com.hexaware.medicalbillingsystem.service.InsurancePlansServiceImpl;
 @RestController
 @RequestMapping("/api/insuranceplans")
 public class InsurancePlansRestController {
-	
-	@Autowired 
+
+	@Autowired
 	IInsurancePlansService service;
-	
+
 	@GetMapping("/welcome")
-	public String visitor()
-	{
+	public String visitor() {
 		return "Welcome to our website Add Your Plans";
-		
-		
+
 	}
-	
+
 	@PostMapping("/add/plan")
-	public InsurancePlans addNewPlan(@RequestBody InsurancePlansDTO plansdto)
-	{
+	public InsurancePlans addNewPlan(@RequestBody InsurancePlansDTO plansdto) {
 		return service.addInsurancePlan(plansdto);
 	}
-	
+
 	@DeleteMapping("/delete/plan/{planId}")
-	public String deletePlans(@PathVariable int planId)
-	{
-		 service.deleteInsurancePlan(planId);
-		 return "Plan with id "+planId+" deleted";
+	public String deletePlans(@PathVariable int planId) {
+		service.deleteInsurancePlan(planId);
+		return "Plan with id " + planId + " deleted";
 	}
-	
+
 	@GetMapping("/getplanbyname/{planName}")
-	public InsurancePlansDTO getPlanByNamee(@PathVariable String planName)
-	{
-		InsurancePlansDTO planDTO=service.getPlanByName(planName);
-		if(planDTO.getPlanName()==null)
-		{
-			throw new PlanNotFoundException(HttpStatus.NO_CONTENT, "There is no plan with name "+planName+" ! Kindly Add it");
+	public InsurancePlansDTO getPlanByNamee(@PathVariable String planName) {
+		InsurancePlansDTO planDTO = service.getPlanByName(planName);
+		if (planDTO.getPlanName() == null) {
+			throw new PlanNotFoundException(HttpStatus.NO_CONTENT,
+					"There is no plan with name " + planName + " ! Kindly Add it");
 		}
 		return planDTO;
 	}
-	
+
 	@GetMapping("/getallplans")
-	public List<InsurancePlans> getAllPlanDetails()
-	{
+	public List<InsurancePlans> getAllPlanDetails() {
 		return service.getAllPlans();
-	}
-	{
-		
 	}
 
 }

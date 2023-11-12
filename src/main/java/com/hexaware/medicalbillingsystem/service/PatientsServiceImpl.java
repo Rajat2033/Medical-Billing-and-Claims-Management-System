@@ -15,10 +15,10 @@ public class PatientsServiceImpl implements IPatientsService {
 
 	@Autowired
 	PatientRepository repository;
-	
+
 	@Override
 	public Patients addPatients(PatientsDTO patientsdto) {
-		Patients patient=new Patients();
+		Patients patient = new Patients();
 		patient.setPatientName(patientsdto.getPatientName());
 		patient.setPatientEmail(patientsdto.getPatientEmail());
 		patient.setPatientPassword(patientsdto.getPatientPassword());
@@ -27,13 +27,13 @@ public class PatientsServiceImpl implements IPatientsService {
 		patient.setPatientContact(patientsdto.getPatientContact());
 		patient.setPatientAddress(patientsdto.getPatientAddress());
 		patient.setPatientDisease(patientsdto.getPatientDisease());
-		patient.setPlans(patientsdto.getPlans() );
+		patient.setPlans(patientsdto.getPlans());
 		return repository.save(patient);
 	}
 
 	@Override
 	public Patients updatepatients(PatientsDTO patientsdto) {
-		Patients patient=new Patients();
+		Patients patient = new Patients();
 		patient.setPatientName(patientsdto.getPatientName());
 		patient.setPatientEmail(patientsdto.getPatientEmail());
 		patient.setPatientPassword(patientsdto.getPatientPassword());
@@ -48,23 +48,25 @@ public class PatientsServiceImpl implements IPatientsService {
 	@Override
 	public void deletePatients(long patientId) {
 		// TODO Auto-generated method stub
-		 repository.deleteById(patientId);;
+		repository.deleteById(patientId);
+		;
 	}
 
 	@Override
 	public PatientsDTO getPatientByName(String patientName) {
-	Patients patient=	repository.findByPatientName(patientName).orElse(new Patients());
-	PatientsDTO patientdto=new PatientsDTO();
-	patientdto.setPatientName(patient.getPatientName());
-	patientdto.setPatientEmail(patient.getPatientEmail());
-	patientdto.setPatientPassword(patient.getPatientPassword());
-	patientdto.setPatientDOB(patient.getPatientDOB());
-	patientdto.setPatientGender(patient.getPatientGender());
-	patientdto.setPatientContact(patient.getPatientContact());
-	patientdto.setPatientAddress(patient.getPatientAddress());
-	patientdto.setPatientDisease(patient.getPatientDisease());
-	
-	return patientdto;
+		Patients patient = repository.findByPatientName(patientName).orElse(new Patients());
+		PatientsDTO patientdto = new PatientsDTO();
+		patientdto.setPatientId(patient.getPatientId());
+		patientdto.setPatientName(patient.getPatientName());
+		patientdto.setPatientEmail(patient.getPatientEmail());
+		patientdto.setPatientPassword(patient.getPatientPassword());
+		patientdto.setPatientDOB(patient.getPatientDOB());
+		patientdto.setPatientGender(patient.getPatientGender());
+		patientdto.setPatientContact(patient.getPatientContact());
+		patientdto.setPatientAddress(patient.getPatientAddress());
+		patientdto.setPatientDisease(patient.getPatientDisease());
+
+		return patientdto;
 	}
 
 	@Override
@@ -73,5 +75,4 @@ public class PatientsServiceImpl implements IPatientsService {
 		return repository.findAll();
 	}
 
-	
 }

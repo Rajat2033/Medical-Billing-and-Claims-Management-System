@@ -65,6 +65,7 @@ public class InsurancePlansServiceImpl implements IInsurancePlansService{
 	public InsurancePlansDTO getPlanByName(String planName) {
 		InsurancePlans plans=repository.findByPlanName(planName).orElse(new InsurancePlans());
 		InsurancePlansDTO planDTO=new InsurancePlansDTO();
+		planDTO.setPlanId(plans.getPlanId());
 		planDTO.setPlanName(plans.getPlanName());
 		planDTO.setPlanType(plans.getPlanType());
 		planDTO.setPlanCoverAmount(plans.getPlanCoverAmount());
