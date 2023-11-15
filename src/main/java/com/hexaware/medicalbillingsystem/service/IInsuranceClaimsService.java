@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.hexaware.medicalbillingsystem.dto.InsuranceClaimsDTO;
 import com.hexaware.medicalbillingsystem.entities.InsuranceClaims;
-import com.hexaware.medicalbillingsystem.entities.Patients;
 
 public interface IInsuranceClaimsService {
 	

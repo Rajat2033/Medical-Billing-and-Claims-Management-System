@@ -1,9 +1,6 @@
 package com.hexaware.medicalbillingsystem.entities;
 
 import java.io.Serializable;
-import java.util.Objects;
-
-import org.springframework.stereotype.Component;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,6 +13,11 @@ import jakarta.validation.constraints.Pattern;
 
 @Entity
 public class InsuranceCompany implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,7 +37,7 @@ public class InsuranceCompany implements Serializable {
 
 	public InsuranceCompany() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public InsuranceCompany(int companyId, @NotNull String companyName,

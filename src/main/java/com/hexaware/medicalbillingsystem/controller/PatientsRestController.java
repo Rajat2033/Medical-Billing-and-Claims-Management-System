@@ -27,9 +27,10 @@ import com.hexaware.medicalbillingsystem.service.IPatientsService;
 public class PatientsRestController {
 
 	@Autowired
-	IInsurancePlansService planService;
+	private IInsurancePlansService planService;
+	
 	@Autowired
-	IPatientsService service;
+	private IPatientsService service;
 
 	@GetMapping("/welcome")
 	public String newPatient() {

@@ -54,13 +54,12 @@ public class HealthcareProviderServiceImpl implements IHealthcareProviderService
 
 	@Override
 	public List<HealthcareProvider> getAllHealthcareProviders() {
-		// TODO Auto-generated method stub
 		return repository.findAll();
 	}
 
 	@Override
 	public HealthcareProviderDTO getProviderById(int providerId) {
-		// TODO Auto-generated method stub
+
 		
 		HealthcareProvider provider=repository.findById(providerId).orElse(new HealthcareProvider());
 		HealthcareProviderDTO providerdto=new HealthcareProviderDTO();

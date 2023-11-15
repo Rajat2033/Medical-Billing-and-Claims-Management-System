@@ -17,20 +17,20 @@ import com.hexaware.medicalbillingsystem.service.IInsurancePlansService;
 import com.hexaware.medicalbillingsystem.service.IPatientsService;
 
 @RestController
-@RequestMapping("/api/admin")
+@RequestMapping("/api/v1/admin")
 public class AdminRestController {
 
 	@Autowired
-	IHealthcareProviderService providerService;
+	private IHealthcareProviderService providerService;
 
 	@Autowired
-	IPatientsService patientService;
+	private IPatientsService patientService;
 
 	@Autowired
-	IInsuranceClaimsService claimService;
+	private IInsuranceClaimsService claimService;
 
 	@Autowired
-	IInsurancePlansService planService;
+	private IInsurancePlansService planService;
 
 	@GetMapping("/welcome")
 	public String heyAdmin() {

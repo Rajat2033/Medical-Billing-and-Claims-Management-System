@@ -17,7 +17,7 @@ public class PatientsDTO {
 
 	public PatientsDTO() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public PatientsDTO(long patientId, String patientName, String patientEmail, String patientPassword,

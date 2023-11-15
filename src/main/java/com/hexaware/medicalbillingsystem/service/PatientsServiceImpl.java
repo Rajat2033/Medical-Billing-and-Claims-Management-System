@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hexaware.medicalbillingsystem.dto.PatientsDTO;
-import com.hexaware.medicalbillingsystem.entities.InsurancePlans;
 import com.hexaware.medicalbillingsystem.entities.Patients;
 import com.hexaware.medicalbillingsystem.repository.PatientRepository;
 
@@ -14,7 +13,7 @@ import com.hexaware.medicalbillingsystem.repository.PatientRepository;
 public class PatientsServiceImpl implements IPatientsService {
 
 	@Autowired
-	PatientRepository repository;
+	private PatientRepository repository;
 
 	@Override
 	public Patients addPatients(PatientsDTO patientsdto) {
@@ -47,9 +46,8 @@ public class PatientsServiceImpl implements IPatientsService {
 
 	@Override
 	public void deletePatients(long patientId) {
-		// TODO Auto-generated method stub
 		repository.deleteById(patientId);
-		;
+
 	}
 
 	@Override
@@ -71,7 +69,7 @@ public class PatientsServiceImpl implements IPatientsService {
 
 	@Override
 	public List<Patients> getAllPatients() {
-		// TODO Auto-generated method stub
+
 		return repository.findAll();
 	}
 

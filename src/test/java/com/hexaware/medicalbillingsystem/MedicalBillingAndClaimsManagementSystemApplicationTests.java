@@ -8,6 +8,7 @@ class MedicalBillingAndClaimsManagementSystemApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }

@@ -20,7 +20,7 @@ import com.hexaware.medicalbillingsystem.service.IHealthcareProviderService;
 public class HealthcareProviderRestController {
 
 	@Autowired
-	IHealthcareProviderService service;
+	private  IHealthcareProviderService service;
 
 	@GetMapping("/welcome")
 	public String newProvider() {

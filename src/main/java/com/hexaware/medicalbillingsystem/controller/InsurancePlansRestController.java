@@ -1,7 +1,6 @@
 package com.hexaware.medicalbillingsystem.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,14 +16,13 @@ import com.hexaware.medicalbillingsystem.dto.InsurancePlansDTO;
 import com.hexaware.medicalbillingsystem.entities.InsurancePlans;
 import com.hexaware.medicalbillingsystem.exceptions.PlanNotFoundException;
 import com.hexaware.medicalbillingsystem.service.IInsurancePlansService;
-import com.hexaware.medicalbillingsystem.service.InsurancePlansServiceImpl;
 
 @RestController
 @RequestMapping("/api/insuranceplans")
 public class InsurancePlansRestController {
 
 	@Autowired
-	IInsurancePlansService service;
+	private IInsurancePlansService service;
 
 	@GetMapping("/welcome")
 	public String visitor() {

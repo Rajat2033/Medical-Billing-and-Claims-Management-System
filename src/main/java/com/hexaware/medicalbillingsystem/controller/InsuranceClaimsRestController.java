@@ -1,10 +1,7 @@
 package com.hexaware.medicalbillingsystem.controller;
 
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hexaware.medicalbillingsystem.dto.InsuranceClaimsDTO;
 import com.hexaware.medicalbillingsystem.entities.InsuranceClaims;
-import com.hexaware.medicalbillingsystem.exceptions.ClaimNotValidException;
 import com.hexaware.medicalbillingsystem.service.IInsuranceClaimsService;
 
 @RestController
@@ -23,7 +19,7 @@ import com.hexaware.medicalbillingsystem.service.IInsuranceClaimsService;
 public class InsuranceClaimsRestController {
 
 	@Autowired
-	IInsuranceClaimsService claimService;
+	 private IInsuranceClaimsService claimService;
 
 	@GetMapping("/new")
 	public String getString() {

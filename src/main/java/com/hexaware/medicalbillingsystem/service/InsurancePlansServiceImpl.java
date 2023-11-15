@@ -1,15 +1,11 @@
 package com.hexaware.medicalbillingsystem.service;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hexaware.medicalbillingsystem.dto.InsurancePlansDTO;
-import com.hexaware.medicalbillingsystem.entities.InsuranceClaims;
 import com.hexaware.medicalbillingsystem.entities.InsurancePlans;
 import com.hexaware.medicalbillingsystem.repository.InsurancePlansRepository;
 
@@ -48,7 +44,7 @@ public class InsurancePlansServiceImpl implements IInsurancePlansService{
 
 //	@Override
 //	public InsurancePlans updateInsurancePlans(InsurancePlansDTO plansdto) {
-//		// TODO Auto-generated method stub
+
 //		return ;
 //	}
 
@@ -76,13 +72,13 @@ public class InsurancePlansServiceImpl implements IInsurancePlansService{
 
 	@Override
 	public List<InsurancePlans> getAllPlans() {
-		// TODO Auto-generated method stub
+		
 		return repository.findAll();
 	}
 
 	@Override
 	public InsurancePlans updateInsurancePlans(InsurancePlansDTO plansdto) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

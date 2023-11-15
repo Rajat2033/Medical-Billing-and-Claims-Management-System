@@ -16,6 +16,10 @@ import jakarta.validation.constraints.NotBlank;
 @Entity
 public class InsurancePlans implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int planId;
@@ -30,11 +34,11 @@ public class InsurancePlans implements Serializable {
 	private Patients patient;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "plans")
-	Set<InsuranceClaims> claims = new HashSet<>();
+	private Set<InsuranceClaims> claims = new HashSet<>();
 
 	public InsurancePlans() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public InsurancePlans(int planId, @NotBlank String planName, String planType, double planCoverAmount,

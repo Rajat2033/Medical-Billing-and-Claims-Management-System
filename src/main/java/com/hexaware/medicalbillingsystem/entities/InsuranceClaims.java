@@ -1,9 +1,6 @@
 package com.hexaware.medicalbillingsystem.entities;
 
 import java.io.Serializable;
-import java.util.Objects;
-
-import org.springframework.stereotype.Component;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -17,6 +14,10 @@ import jakarta.persistence.OneToOne;
 @Entity
 public class InsuranceClaims implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long claimId;
@@ -32,7 +33,7 @@ public class InsuranceClaims implements Serializable {
 
 	public InsuranceClaims() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public long getClaimId() {

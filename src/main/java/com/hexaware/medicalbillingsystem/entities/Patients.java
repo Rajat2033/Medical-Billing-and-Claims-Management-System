@@ -1,5 +1,7 @@
 package com.hexaware.medicalbillingsystem.entities;
 
+import java.io.Serializable;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,12 +11,15 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
 @Entity
-public class Patients {
+public class Patients implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long patientId;
@@ -38,7 +43,7 @@ public class Patients {
 
 	public Patients() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public Patients(long patientId, @NotBlank String patientName, @Email String patientEmail,
