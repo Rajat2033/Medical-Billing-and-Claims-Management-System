@@ -9,16 +9,18 @@ public interface IInsuranceClaimsService {
 	
 	public InsuranceClaims insertClaims(InsuranceClaimsDTO claimDTO);
 
-	public InsuranceClaims updateClaimStatus(InsuranceClaimsDTO claimsDTO);
+	public InsuranceClaims updateClaimStatus(InsuranceClaimsDTO claimsDTO,long claimId);
 
 	public String approveClaim(int claimid);
  
 	public InsuranceClaimsDTO getById(long claimId);
 	 
-	public int getTotalPendingInsuranceClaims(String claimStatus);
+	public InsuranceClaimsDTO getTotalPendingInsuranceClaims(String claimStatus);
 
-	public int getTotalApprovedClaims(String claimStatus);
+	public InsuranceClaimsDTO getTotalApprovedClaims(String claimStatus);
 	
 	public List<InsuranceClaims> getAllInsuranceClaims();
+
+	
 
 }

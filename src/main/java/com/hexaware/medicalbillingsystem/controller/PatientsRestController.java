@@ -23,7 +23,7 @@ import com.hexaware.medicalbillingsystem.service.IInsurancePlansService;
 import com.hexaware.medicalbillingsystem.service.IPatientsService;
 
 @RestController
-@RequestMapping("/api/patients")
+@RequestMapping("/api/v1/patients")
 public class PatientsRestController {
 
 	@Autowired

@@ -8,9 +8,9 @@ public class InvoiceDetailsDTO {
 	private int invoiceId;
 	private LocalDate invoiceDate;
 	private LocalDate invoicedueDate;
-	private Patients patient;
 	private int invoiceTax;
 	private double invoiceTotalAmount;
+	private Patients patient;
 
 	public int getInvoiceId() {
 		return invoiceId;

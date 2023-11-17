@@ -10,7 +10,7 @@ public interface IInsuranceCompanyService {
 
 	public InsuranceCompany updateCompany(InsuranceCompanyDTO companydto);
 
-	public void deleteCompany(int companyId);
+	public void deleteCompanyById(int companyId);
 
 	public InsuranceCompanyDTO getCompanyByName(String companyName);
 

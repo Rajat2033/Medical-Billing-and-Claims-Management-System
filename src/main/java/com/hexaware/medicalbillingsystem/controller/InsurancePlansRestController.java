@@ -30,7 +30,7 @@ public class InsurancePlansRestController {
 
 	}
 
-	@PostMapping("/add/plan")
+	@PostMapping(path="/add/plan",consumes = "application/json",produces="application/json")
 	public InsurancePlans addNewPlan(@RequestBody InsurancePlansDTO plansdto) {
 		return service.addInsurancePlan(plansdto);
 	}

@@ -12,7 +12,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class InsuranceClaims implements Serializable {
@@ -25,12 +24,13 @@ public class InsuranceClaims implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long claimId;
 
-	@NotBlank
+	@DecimalMin(value = "40000.00")
+	@DecimalMax(value = "100000.00")
 	private double claimAmount;
 	private String claimStatus;
-	
-	@DecimalMin(value="12000.00")
-	@DecimalMax(value="100000.00")
+
+	@DecimalMin(value = "12000.00")
+	@DecimalMax(value = "100000.00")
 	private double invoiceAmount;
 	@OneToOne
 	@JoinColumn(name = "patient_Id", referencedColumnName = "patientId")
@@ -85,7 +85,7 @@ public class InsuranceClaims implements Serializable {
 		this.plans = plans;
 	}
 
-	public InsuranceClaims(long claimId, @NotBlank double claimAmount, String claimStatus,
+	public InsuranceClaims(long claimId, double claimAmount, String claimStatus,
 			@DecimalMin("12000.00") @DecimalMax("100000.00") double invoiceAmount, Patients patient,
 			InsurancePlans plans) {
 		super();
@@ -104,7 +104,5 @@ public class InsuranceClaims implements Serializable {
 	public void setInvoiceAmount(double invoiceAmount) {
 		this.invoiceAmount = invoiceAmount;
 	}
-
-
 
 }

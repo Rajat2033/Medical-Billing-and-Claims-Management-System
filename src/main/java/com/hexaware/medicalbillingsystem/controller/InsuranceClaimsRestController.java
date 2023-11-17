@@ -15,7 +15,7 @@ import com.hexaware.medicalbillingsystem.entities.InsuranceClaims;
 import com.hexaware.medicalbillingsystem.service.IInsuranceClaimsService;
 
 @RestController
-@RequestMapping("/api/insuranceclaims")
+@RequestMapping("/api/v1/insuranceclaims")
 public class InsuranceClaimsRestController {
 
 	@Autowired
@@ -26,14 +26,14 @@ public class InsuranceClaimsRestController {
 		return "Hello new Claim";
 	}
 
-	@PostMapping("/add/newclaim")
+	@PostMapping(path="/add/newclaim",consumes = "application/json",produces="application/json")
 	public InsuranceClaims insertNewClaim(@RequestBody InsuranceClaimsDTO claimDTO) {
 		return claimService.insertClaims(claimDTO);
 	}
 
-	@PutMapping("/update/claim")
-	public InsuranceClaims updateStatus(@RequestBody InsuranceClaimsDTO claimDTO) {
-		return claimService.updateClaimStatus(claimDTO);
+	@PutMapping("/update/claim/{claimId}")
+	public InsuranceClaims updateStatus(@RequestBody InsuranceClaimsDTO claimDTO,@PathVariable long claimId) {
+		return claimService.updateClaimStatus(claimDTO,claimId);
 	}
 
 	@GetMapping("/getclaimbyid/{claimId}")
@@ -42,13 +42,13 @@ public class InsuranceClaimsRestController {
 	}
 
 	@GetMapping("/getall/approvedclaims/{claimStatus}")
-	public int getAllApprovedClaims(@PathVariable String claimStatus) {
+	public InsuranceClaimsDTO getAllApprovedClaims(@PathVariable String claimStatus) {
 		return claimService.getTotalApprovedClaims(claimStatus);
 
 	}
 
 	@GetMapping("/getall/pendingclaims")
-	public int getAllPendingClaims() {
+	public InsuranceClaimsDTO getAllPendingClaims() {
 		return claimService.getTotalPendingInsuranceClaims("Pending");
 
 	}

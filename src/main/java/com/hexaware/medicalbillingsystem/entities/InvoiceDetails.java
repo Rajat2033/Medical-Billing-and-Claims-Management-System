@@ -18,7 +18,7 @@ public class InvoiceDetails {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int invoiceId;
 	private LocalDate invoiceDate;
-	private LocalDate invoicedueDate;
+	private LocalDate invoiceDueDate;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "patient_Id")
@@ -35,22 +35,15 @@ public class InvoiceDetails {
 
 	}
 
-	public InvoiceDetails(int invoiceId, LocalDate invoiceDate, LocalDate invoicedueDate, Patients patient,
-			@NotNull int invoiceTax,  double invoiceTotalAmount) {
+	public InvoiceDetails(int invoiceId, LocalDate invoiceDate, LocalDate invoiceDueDate, Patients patient,
+			@NotNull int invoiceTax, double invoiceTotalAmount) {
 		super();
 		this.invoiceId = invoiceId;
 		this.invoiceDate = invoiceDate;
-		this.invoicedueDate = invoicedueDate;
+		this.invoiceDueDate = invoiceDueDate;
 		this.patient = patient;
 		this.invoiceTax = invoiceTax;
 		this.invoiceTotalAmount = invoiceTotalAmount;
-	}
-
-	@Override
-	public String toString() {
-		return "InvoiceDetails [invoiceId=" + invoiceId + ", invoiceDate=" + invoiceDate + ", invoicedueDate="
-				+ invoicedueDate + ", patient=" + patient + ", invoiceTax=" + invoiceTax + ", invoiceTotalAmount="
-				+ invoiceTotalAmount + "]";
 	}
 
 	public int getInvoiceId() {
@@ -69,12 +62,12 @@ public class InvoiceDetails {
 		this.invoiceDate = invoiceDate;
 	}
 
-	public LocalDate getInvoicedueDate() {
-		return invoicedueDate;
+	public LocalDate getInvoiceDueDate() {
+		return invoiceDueDate;
 	}
 
-	public void setInvoicedueDate(LocalDate invoicedueDate) {
-		this.invoicedueDate = invoicedueDate;
+	public void setInvoiceDueDate(LocalDate invoiceDueDate) {
+		this.invoiceDueDate = invoiceDueDate;
 	}
 
 	public Patients getPatient() {
@@ -100,5 +93,15 @@ public class InvoiceDetails {
 	public void setInvoiceTotalAmount(double invoiceTotalAmount) {
 		this.invoiceTotalAmount = invoiceTotalAmount;
 	}
+
+	@Override
+	public String toString() {
+		return "InvoiceDetails [invoiceId=" + invoiceId + ", invoiceDate=" + invoiceDate + ", invoiceDueDate="
+				+ invoiceDueDate + ", patient=" + patient + ", invoiceTax=" + invoiceTax + ", invoiceTotalAmount="
+				+ invoiceTotalAmount + "]";
+	}
+
+	
+
 
 }

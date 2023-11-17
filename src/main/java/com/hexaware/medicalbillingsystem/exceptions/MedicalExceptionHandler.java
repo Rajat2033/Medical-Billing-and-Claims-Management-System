@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class MedicalExceptionHandler {
 	
 	@ResponseStatus
-	@ExceptionHandler({ PatientNotFoundException.class,PatientIllegalArgumentsException.class,PlanNotFoundException.class })
+	@ExceptionHandler({ PatientNotFoundException.class,PatientIllegalArgumentsException.class,PlanNotFoundException.class ,
+		NoSuchInvoiceGeneratedException.class, ClaimNotValidException.class,CompanyNotRegisteredException.class})
 	public ResponseEntity<String> handleAnyException(Exception e) {
 		return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST); 
 	}

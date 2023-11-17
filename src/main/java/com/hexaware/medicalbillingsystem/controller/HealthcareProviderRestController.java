@@ -16,7 +16,7 @@ import com.hexaware.medicalbillingsystem.entities.HealthcareProvider;
 import com.hexaware.medicalbillingsystem.service.IHealthcareProviderService;
 
 @RestController
-@RequestMapping("/api/provider")
+@RequestMapping("/api/v1/provider")
 public class HealthcareProviderRestController {
 
 	@Autowired
@@ -27,7 +27,7 @@ public class HealthcareProviderRestController {
 		return "Hello New Provider";
 	}
 
-	@PostMapping("/add/provider")
+	@PostMapping(path="/add/provider",consumes = "application/json",produces="application/json")
 	public HealthcareProvider insertNewProvider(@RequestBody HealthcareProviderDTO providerdto) {
 		return service.addProvider(providerdto);
 	}
