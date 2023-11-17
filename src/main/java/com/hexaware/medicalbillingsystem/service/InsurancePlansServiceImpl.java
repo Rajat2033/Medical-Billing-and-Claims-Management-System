@@ -60,6 +60,7 @@ public class InsurancePlansServiceImpl implements IInsurancePlansService {
 	public InsurancePlans updateInsurancePlans(InsurancePlansDTO plansdto) {
 
 		InsurancePlans plans = new InsurancePlans();
+		plans.setPlanId(plansdto.getPlanId());
 		plans.setPlanName(plansdto.getPlanName());
 		plans.setPlanType(plansdto.getPlanType());
 		plans.setPlanCoverAmount(plansdto.getPlanCoverAmount());

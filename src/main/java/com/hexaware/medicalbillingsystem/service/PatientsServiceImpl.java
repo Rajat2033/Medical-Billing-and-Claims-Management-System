@@ -33,14 +33,15 @@ public class PatientsServiceImpl implements IPatientsService {
 	@Override
 	public Patients updatepatients(PatientsDTO patientsdto) {
 		Patients patient = new Patients();
+		patient.setPatientId(patientsdto.getPatientId());
 		patient.setPatientName(patientsdto.getPatientName());
-//		patient.setPatientEmail(patientsdto.getPatientEmail());
-//		patient.setPatientPassword(patientsdto.getPatientPassword());
-//		patient.setPatientDOB(patientsdto.getPatientDOB());
-//		patient.setPatientGender(patientsdto.getPatientGender());
-//		patient.setPatientContact(patientsdto.getPatientContact());
-//		patient.setPatientAddress(patientsdto.getPatientAddress());
-//		patient.setPatientDisease(patientsdto.getPatientDisease());
+		patient.setPatientEmail(patientsdto.getPatientEmail());
+		patient.setPatientPassword(patientsdto.getPatientPassword());
+		patient.setPatientDOB(patientsdto.getPatientDOB());
+		patient.setPatientGender(patientsdto.getPatientGender());
+		patient.setPatientContact(patientsdto.getPatientContact());
+		patient.setPatientAddress(patientsdto.getPatientAddress());
+		patient.setPatientDisease(patientsdto.getPatientDisease());
 		return repository.save(patient);
 	}
 

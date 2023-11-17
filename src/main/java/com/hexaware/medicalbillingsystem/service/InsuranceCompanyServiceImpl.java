@@ -33,6 +33,7 @@ public class InsuranceCompanyServiceImpl implements IInsuranceCompanyService {
 	public InsuranceCompany updateCompany(InsuranceCompanyDTO companydto) {
 
 		InsuranceCompany company = new InsuranceCompany();
+		company.setCompanyId(companydto.getCompanyId());
 		company.setCompanyName(companydto.getCompanyName());
 		company.setCompanyPassword(companydto.getCompanyPassword());
 		company.setCompanyEmail(companydto.getCompanyEmail());
