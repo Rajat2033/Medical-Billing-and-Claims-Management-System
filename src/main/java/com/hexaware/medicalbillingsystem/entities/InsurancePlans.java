@@ -11,7 +11,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
+
 
 @Entity
 public class InsurancePlans implements Serializable {
@@ -26,7 +29,14 @@ public class InsurancePlans implements Serializable {
 	@NotBlank
 	private String planName;
 	private String planType;
+
+	@DecimalMin(value = "150000.00")
+	@DecimalMax(value = "750000.00")
 	private double planCoverAmount;
+
+	
+	@DecimalMin(value="400.00")
+	@DecimalMax(value = "3000.00")
 	private double planEmi;
 	private String planDetails;
 
@@ -41,8 +51,12 @@ public class InsurancePlans implements Serializable {
 
 	}
 
-	public InsurancePlans(int planId, @NotBlank String planName, String planType, double planCoverAmount,
-			double planEmi, String planDetails, Patients patient, Set<InsuranceClaims> claims) {
+	
+
+	public InsurancePlans(int planId, @NotBlank String planName, String planType,
+			@DecimalMin("150000.00") @DecimalMax("750000.00") double planCoverAmount,
+			@DecimalMin("400.00") @DecimalMax("3000.00") double planEmi, String planDetails, Patients patient,
+			Set<InsuranceClaims> claims) {
 		super();
 		this.planId = planId;
 		this.planName = planName;
@@ -53,6 +67,8 @@ public class InsurancePlans implements Serializable {
 		this.patient = patient;
 		this.claims = claims;
 	}
+
+
 
 	public int getPlanId() {
 		return planId;

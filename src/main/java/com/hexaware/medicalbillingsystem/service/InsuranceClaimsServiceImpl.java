@@ -42,6 +42,7 @@ public class InsuranceClaimsServiceImpl implements IInsuranceClaimsService {
 		claimdto.setClaimAmount(claim.getClaimAmount());
 		claimdto.setClaimStatus(claim.getClaimStatus());
 		claimdto.setPatient(claim.getPatient());
+		claimdto.setInvoiceAmount(claim.getInvoiceAmount());
 		return claimdto;
 	}
 
@@ -50,6 +51,7 @@ public class InsuranceClaimsServiceImpl implements IInsuranceClaimsService {
 		InsuranceClaims claims = new InsuranceClaims();
 		claims.setClaimAmount(claimDTO.getClaimAmount());
 		claims.setClaimStatus(claimDTO.getClaimStatus());
+		claims.setInvoiceAmount(claimDTO.getInvoiceAmount());
 		claims.setPatient(claimDTO.getPatient());
 		claims.setPlans(claimDTO.getPlans());
 		return repository.save(claims);
@@ -62,6 +64,7 @@ public class InsuranceClaimsServiceImpl implements IInsuranceClaimsService {
 		claims.setClaimStatus(claimsDTO.getClaimStatus());
 		claims.setPatient(claimsDTO.getPatient());
 		claims.setPlans(claimsDTO.getPlans());
+		claims.setInvoiceAmount(claimsDTO.getInvoiceAmount());
 		return repository.save(claims);
 	}
 

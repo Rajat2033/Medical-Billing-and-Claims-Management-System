@@ -13,7 +13,7 @@ import com.hexaware.medicalbillingsystem.repository.HealthcareProviderRepository
 public class HealthcareProviderServiceImpl implements IHealthcareProviderService {
 
 	@Autowired
-	HealthcareProviderRepository repository;
+	private HealthcareProviderRepository repository;
 
 	@Override
 	public HealthcareProvider addProvider(HealthcareProviderDTO providerdto) {

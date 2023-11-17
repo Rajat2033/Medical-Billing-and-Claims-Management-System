@@ -6,10 +6,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+
+/*
+@Author : Rajat Darvhekar
+Modified Date : 
+Description : Entity class for HealthcareProvider containing various properties
+*/
 
 @Entity
 public class HealthcareProvider implements Serializable {
@@ -20,7 +27,8 @@ public class HealthcareProvider implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "providerSeq", initialValue = 100, allocationSize = 2)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "providerSeq")
 	private int providerId;
 
 	@NotBlank

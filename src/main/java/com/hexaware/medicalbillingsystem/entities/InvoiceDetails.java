@@ -25,13 +25,25 @@ public class InvoiceDetails {
 	private Patients patient;
 
 	@NotNull
-
 	private int invoiceTax;
+
+	
 	private double invoiceTotalAmount;
 
 	public InvoiceDetails() {
 		super();
 
+	}
+
+	public InvoiceDetails(int invoiceId, LocalDate invoiceDate, LocalDate invoicedueDate, Patients patient,
+			@NotNull int invoiceTax,  double invoiceTotalAmount) {
+		super();
+		this.invoiceId = invoiceId;
+		this.invoiceDate = invoiceDate;
+		this.invoicedueDate = invoicedueDate;
+		this.patient = patient;
+		this.invoiceTax = invoiceTax;
+		this.invoiceTotalAmount = invoiceTotalAmount;
 	}
 
 	@Override
@@ -86,17 +98,6 @@ public class InvoiceDetails {
 	}
 
 	public void setInvoiceTotalAmount(double invoiceTotalAmount) {
-		this.invoiceTotalAmount = invoiceTotalAmount;
-	}
-
-	public InvoiceDetails(int invoiceId, LocalDate invoiceDate, LocalDate invoicedueDate, Patients patient,
-			@NotNull int invoiceTax, double invoiceTotalAmount) {
-		super();
-		this.invoiceId = invoiceId;
-		this.invoiceDate = invoiceDate;
-		this.invoicedueDate = invoicedueDate;
-		this.patient = patient;
-		this.invoiceTax = invoiceTax;
 		this.invoiceTotalAmount = invoiceTotalAmount;
 	}
 

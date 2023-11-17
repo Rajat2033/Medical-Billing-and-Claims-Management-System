@@ -1,19 +1,32 @@
 package com.hexaware.medicalbillingsystem.service;
 
-import java.util.Set;
 
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hexaware.medicalbillingsystem.dto.InsuranceCompanyDTO;
 import com.hexaware.medicalbillingsystem.entities.InsuranceCompany;
+import com.hexaware.medicalbillingsystem.repository.InsuranceCompanyRepository;
 
 @Service
 public class InsuranceCompanyServiceImpl implements IInsuranceCompanyService {
 
+	@Autowired
+	private InsuranceCompanyRepository repository;
+	
 	@Override
 	public InsuranceCompany addCompany(InsuranceCompanyDTO companydto) {
 
-		return null;
+		InsuranceCompany company=new InsuranceCompany();
+		company.setCompanyName(companydto.getCompanyName());
+		company.setCompanyPassword(companydto.getCompanyPassword());
+		company.setCompanyEmail(companydto.getCompanyEmail());
+		company.setCompanyContact(companydto.getCompanyContact());
+		company.setCompanyStartYears(companydto.getCompanyStartYears());
+		return repository.save(company);
 	}
 
 	@Override
@@ -25,6 +38,7 @@ public class InsuranceCompanyServiceImpl implements IInsuranceCompanyService {
 	@Override
 	public void deleteCompany(int companyId) {
 
+		repository.deleteById(companyId);
 		
 	}
 
@@ -35,9 +49,10 @@ public class InsuranceCompanyServiceImpl implements IInsuranceCompanyService {
 	}
 
 	@Override
-	public Set<InsuranceCompany> getAllInsuranceCompanyDetails() {
+	public List<InsuranceCompany> getAllInsuranceCompanyDetails() {
 		
-		return null;
+	
+		return repository.findAll();
 	}
 
 	

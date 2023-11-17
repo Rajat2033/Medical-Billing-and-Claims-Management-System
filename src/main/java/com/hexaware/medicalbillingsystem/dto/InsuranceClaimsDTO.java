@@ -7,6 +7,7 @@ public class InsuranceClaimsDTO {
 	private long claimId;
 	private double claimAmount;
 	private String claimStatus;
+	private double invoiceAmount;
 	private Patients patient;
 	private InsurancePlans plans;
 
@@ -48,6 +49,14 @@ public class InsuranceClaimsDTO {
 
 	public void setPlans(InsurancePlans plans) {
 		this.plans = plans;
+	}
+
+	public double getInvoiceAmount() {
+		return invoiceAmount;
+	}
+
+	public void setInvoiceAmount(double invoiceAmount) {
+		this.invoiceAmount = invoiceAmount;
 	}
 
 }

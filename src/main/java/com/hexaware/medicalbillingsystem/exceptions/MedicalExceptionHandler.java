@@ -14,9 +14,5 @@ public class MedicalExceptionHandler {
 	@ExceptionHandler({ PatientNotFoundException.class,PatientIllegalArgumentsException.class,PlanNotFoundException.class })
 	public ResponseEntity<String> handleAnyException(Exception e) {
 		return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST); 
-
 	}
-		
-	
-
 }

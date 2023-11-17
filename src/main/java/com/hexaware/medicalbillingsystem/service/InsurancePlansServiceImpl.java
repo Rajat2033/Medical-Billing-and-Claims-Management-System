@@ -12,10 +12,10 @@ import com.hexaware.medicalbillingsystem.repository.InsurancePlansRepository;
 @Service
 public class InsurancePlansServiceImpl implements IInsurancePlansService{
 
+
 	@Autowired
-	IInsuranceClaimsService service;
-	@Autowired
-	InsurancePlansRepository repository;
+	private InsurancePlansRepository repository;
+	
 	@Override
 	public InsurancePlans addInsurancePlan(InsurancePlansDTO plansdto) {
 		
@@ -25,28 +25,12 @@ public class InsurancePlansServiceImpl implements IInsurancePlansService{
 		plans.setPlanCoverAmount(plansdto.getPlanCoverAmount());
 		plans.setPlanEmi(plansdto.getPlanEmi());
 		plans.setPlanDetails(plansdto.getPlanDetails());
-		/*
-		 * 
-		 * Set<InsuranceClaims> claimSet = new HashSet<>(); for (InsuranceClaims
-		 * claimdto : plansdto.getClaims()) { InsuranceClaims claims = new
-		 * InsuranceClaims(); claims.setClaimAmount(claimdto.getClaimAmount());
-		 * claims.setClaimStatus(claimdto.getClaimStatus());
-		 * claims.setPatient(claimdto.getPatient()); claims.setPlans(plans);
-		 * 
-		 * claimSet.add(claimdto); }
-		 * 
-		 * plans.setClaims(claimSet);
-		 */
 		
 		
 		return repository.save(plans);
 	}
 
-//	@Override
-//	public InsurancePlans updateInsurancePlans(InsurancePlansDTO plansdto) {
 
-//		return ;
-//	}
 
 	@Override
 	public void deleteInsurancePlan(int planId) {
@@ -64,7 +48,7 @@ public class InsurancePlansServiceImpl implements IInsurancePlansService{
 		planDTO.setPlanType(plans.getPlanType());
 		planDTO.setPlanCoverAmount(plans.getPlanCoverAmount());
 		planDTO.setPlanEmi(plans.getPlanEmi());
-		planDTO.setPlanEmi(plans.getPlanEmi());
+		planDTO.setPlanDetails(plans.getPlanDetails());
 		planDTO.setClaims(plans.getClaims());
 		return planDTO;
 		
@@ -79,7 +63,16 @@ public class InsurancePlansServiceImpl implements IInsurancePlansService{
 	@Override
 	public InsurancePlans updateInsurancePlans(InsurancePlansDTO plansdto) {
 		
-		return null;
+		
+		InsurancePlans plans=new InsurancePlans();
+		plans.setPlanName(plansdto.getPlanName());
+		plans.setPlanType(plansdto.getPlanType());
+		plans.setPlanCoverAmount(plansdto.getPlanCoverAmount());
+		plans.setPlanEmi(plansdto.getPlanEmi());
+		plans.setPlanDetails(plansdto.getPlanDetails());
+		
+		
+		return repository.save(plans);
 	}
 
 
