@@ -1,5 +1,9 @@
 package com.hexaware.medicalbillingsystem.dto;
-
+/*
+@Author :  Hema Sree  
+Modified Date : 06-11-2023
+Description :DTO class for InsuranceCompany containing various properties
+*/
 
 public class InsuranceCompanyDTO {
 	private int companyId;
