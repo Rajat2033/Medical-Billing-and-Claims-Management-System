@@ -10,7 +10,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotNull;
-
+/*
+@Author :  Hema Sree  
+Modified Date : 28-10-2023
+Description : Entity class for InvoiceDetails containing various properties
+*/
 @Entity
 public class InvoiceDetails {
 
