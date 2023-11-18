@@ -2,7 +2,11 @@ package com.hexaware.medicalbillingsystem.dto;
 
 import com.hexaware.medicalbillingsystem.entities.InsurancePlans;
 import com.hexaware.medicalbillingsystem.entities.Patients;
-
+/*
+@Author :  Hema Sree 
+Modified Date : 06-11-2023
+Description :DTO class for InsuranceClaims containing various properties
+*/
 public class InsuranceClaimsDTO {
 	private long claimId;
 	private double claimAmount;
