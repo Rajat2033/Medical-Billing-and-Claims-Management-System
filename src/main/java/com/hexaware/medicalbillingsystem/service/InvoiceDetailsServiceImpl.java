@@ -32,14 +32,14 @@ public class InvoiceDetailsServiceImpl implements IInvoiceDetailsService {
 		details.setInvoiceDueDate(detailsDTO.getInvoicedueDate());
 		details.setInvoiceTax(detailsDTO.getInvoiceTax());
 		details.setInvoiceTotalAmount(detailsDTO.getInvoiceTotalAmount());
-		details.setPatient(detailsDTO.getPatient());
-<<<<<<< HEAD
+	
+
 		logger.info("Invoice Generated Successfully!!!!!!!");
-=======
+
 		details.setConsultationFee(detailsDTO.getConsultationFee());
-		deails.setDiagnosticTestsFee(detailsDTO.getDiagnosticTestsFee());
+		details.setDiagnosticTestsFee(detailsDTO.getDiagnosticTestsFee());
 		details.setDiagnosticScanFee(detailsDTO.getDiagnosticScanFee());
->>>>>>> 5294ea0a4043e5eafc9eb48d7177d5d043fa09bb
+
 		return repository.save(details);
 	}
 
@@ -60,14 +60,13 @@ public class InvoiceDetailsServiceImpl implements IInvoiceDetailsService {
 		detailsDTO.setInvoicedueDate(details.getInvoiceDueDate());
 		detailsDTO.setInvoiceTax(details.getInvoiceTax());
 		detailsDTO.setInvoiceTotalAmount(details.getInvoiceTotalAmount());
-		detailsDTO.setPatient(details.getPatient());
-<<<<<<< HEAD
+		
+
 		logger.info("Fetched the Invoice by Id "+invoiceId+" !!!!!!!!!");
-=======
+
 		detailsDTO.setConsultationFee(details.getConsultationFee());
-		deailsDTO.setDiagnosticTestsFee(details.getDiagnosticTestsFee());
+		detailsDTO.setDiagnosticTestsFee(details.getDiagnosticTestsFee());
 		detailsDTO.setDiagnosticScanFee(details.getDiagnosticScanFee());
->>>>>>> 5294ea0a4043e5eafc9eb48d7177d5d043fa09bb
 		return detailsDTO;
 	}
 

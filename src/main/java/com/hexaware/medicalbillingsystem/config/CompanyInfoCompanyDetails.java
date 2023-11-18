@@ -17,20 +17,21 @@ public class CompanyInfoCompanyDetails implements UserDetails {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String companyEmail;
+
+	private String companyName;
 	private String companyPassword;
 	private List<GrantedAuthority> authorities;
-
-	public CompanyInfoCompanyDetails(InsuranceCompany company) {
-		companyEmail = company.getCompanyEmail();
-		companyPassword = company.getCompanyPassword();
-		authorities = Arrays.stream(company.getRole().split(" , ")).map(SimpleGrantedAuthority::new)
-				.collect(Collectors.toList());
+	
+	public CompanyInfoCompanyDetails(InsuranceCompany company)
+	{
+		companyName=company.getCompanyName();
+		companyPassword=company.getCompanyPassword();
+		authorities=Arrays.stream(company.getRole().split(","))
+				.map(SimpleGrantedAuthority::new).collect(Collectors.toList());
 	}
-
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-
+	
 		return authorities;
 	}
 
@@ -41,7 +42,7 @@ public class CompanyInfoCompanyDetails implements UserDetails {
 
 	@Override
 	public String getUsername() {
-		return companyEmail;
+		return companyName;
 	}
 
 	@Override

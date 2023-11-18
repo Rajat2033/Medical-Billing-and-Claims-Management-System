@@ -2,7 +2,13 @@ package com.hexaware.medicalbillingsystem.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hexaware.medicalbillingsystem.dto.AuthRequest;
 import com.hexaware.medicalbillingsystem.dto.HealthcareProviderDTO;
 import com.hexaware.medicalbillingsystem.entities.HealthcareProvider;
+import com.hexaware.medicalbillingsystem.service.AuthJWTService;
 import com.hexaware.medicalbillingsystem.service.IHealthcareProviderService;
 /*
 @Author :   Rajat Darvhekar  
@@ -23,6 +31,13 @@ Description : Controller  for HealthcareProvider
 @RequestMapping("/api/v1/provider")
 public class HealthcareProviderRestController {
 
+	Logger logger=LoggerFactory.getLogger(HealthcareProviderRestController.class); 
+
+	@Autowired
+	AuthenticationManager authenticationManager;
+	
+	@Autowired
+	private AuthJWTService jwtService;
 	@Autowired
 	private  IHealthcareProviderService service;
 
@@ -56,5 +71,24 @@ public class HealthcareProviderRestController {
 	public HealthcareProviderDTO getProviderById(int providerId) {
 		return service.getProviderById(providerId);
 	}
+	@PostMapping("/authenticate")
+	public String authenticateAndGenerateToken(@RequestBody AuthRequest authReq) {
+		
+			Authentication authenticate = authenticationManager.authenticate(
+					new UsernamePasswordAuthenticationToken(authReq.getUsername(), authReq.getPassword()));
 
+			// If authentication is successful, generate a JWT
+			String Token=null;
+			if (authenticate.isAuthenticated()) {
+				Token=jwtService.generateToken(authReq.getUsername());
+				logger.info("JWT Token successfully generated!!!");
+			}
+
+			else {
+				logger.info("Not Found USERNAME!!!!");
+				throw new UsernameNotFoundException("UserName Not Found!!!! ");
+			}
+		 return Token;
+		
+	}
 }

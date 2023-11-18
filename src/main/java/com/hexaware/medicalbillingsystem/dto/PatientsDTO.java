@@ -1,6 +1,6 @@
 package com.hexaware.medicalbillingsystem.dto;
 
-import com.hexaware.medicalbillingsystem.entities.InsurancePlans;
+
 /*
 @Author :   Rajat Darvhekar 
 Modified Date : 06-11-2023
@@ -17,28 +17,14 @@ public class PatientsDTO {
 	private long patientContact;
 	private String patientAddress;
 	private String patientDisease;
-	private InsurancePlans plans;
+	
 
 	public PatientsDTO() {
 		super();
 
 	}
 
-	public PatientsDTO(long patientId, String patientName, String patientEmail, String patientPassword,
-			String patientDOB, String patientGender, long patientContact, String patientAddress, String patientDisease,
-			InsurancePlans plans) {
-		super();
-		this.patientId = patientId;
-		this.patientName = patientName;
-		this.patientEmail = patientEmail;
-		this.patientPassword = patientPassword;
-		this.patientDOB = patientDOB;
-		this.patientGender = patientGender;
-		this.patientContact = patientContact;
-		this.patientAddress = patientAddress;
-		this.patientDisease = patientDisease;
-		this.plans = plans;
-	}
+	
 
 	public long getPatientId() {
 		return patientId;
@@ -112,12 +98,5 @@ public class PatientsDTO {
 		this.patientDisease = patientDisease;
 	}
 
-	public InsurancePlans getPlans() {
-		return plans;
-	}
-
-	public void setPlans(InsurancePlans plans) {
-		this.plans = plans;
-	}
-
+	
 }

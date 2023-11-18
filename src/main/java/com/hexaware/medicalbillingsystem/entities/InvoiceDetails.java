@@ -10,6 +10,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 /*
 @Author :  Hema Sree  
@@ -38,7 +40,7 @@ public class InvoiceDetails {
 	@DecimalMin(value="1000.00")
 	@DecimalMax(value="8000.00")
 	private double consultationFee;
-	private double dianosticTestsFeee;
+	private double diagnosticTestsFee;
 	private double diagnosticScanFee;
 
 	public int getInvoiceId() {
@@ -83,11 +85,12 @@ public class InvoiceDetails {
 	public void setConsultationFee(double consultationFee) {
 		this.consultationFee = consultationFee;
 	}
-	public double getDianosticTestsFeee() {
-		return dianosticTestsFeee;
+
+	public double getDiagnosticTestsFee() {
+		return diagnosticTestsFee;
 	}
-	public void setDianosticTestsFeee(double dianosticTestsFeee) {
-		this.dianosticTestsFeee = dianosticTestsFeee;
+	public void setDiagnosticTestsFee(double diagnosticTestsFee) {
+		this.diagnosticTestsFee = diagnosticTestsFee;
 	}
 	public double getDiagnosticScanFee() {
 		return diagnosticScanFee;
@@ -97,7 +100,7 @@ public class InvoiceDetails {
 	}
 public InvoiceDetails(int invoiceId, LocalDate invoiceDate, LocalDate invoiceDueDate, Patients patient,
 		@NotNull int invoiceTax, double invoiceTotalAmount,
-		@DecimalMin("1000.00") @DecimalMax("8000.00") double consultationFee, double dianosticTestsFeee,
+		@DecimalMin("1000.00") @DecimalMax("8000.00") double consultationFee, double diagnosticTestsFee,
 		double diagnosticScanFee) {
 	super();
 	this.invoiceId = invoiceId;
@@ -107,7 +110,7 @@ public InvoiceDetails(int invoiceId, LocalDate invoiceDate, LocalDate invoiceDue
 	this.invoiceTax = invoiceTax;
 	this.invoiceTotalAmount = invoiceTotalAmount;
 	this.consultationFee = consultationFee;
-	this.dianosticTestsFeee = dianosticTestsFeee;
+	this.diagnosticTestsFee = diagnosticTestsFee;
 	this.diagnosticScanFee = diagnosticScanFee;
 }
 public InvoiceDetails() {

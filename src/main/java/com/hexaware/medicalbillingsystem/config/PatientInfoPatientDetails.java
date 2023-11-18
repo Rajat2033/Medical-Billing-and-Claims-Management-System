@@ -17,15 +17,15 @@ public class PatientInfoPatientDetails implements UserDetails {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
 	private String patientName;
 	private String patientPassword;
 	private List<GrantedAuthority> authorities;
 
-	public  PatientInfoPatientDetails(Patients patients) {
-		patientName=patients.getPatientName();
-		patientPassword=patients.getPatientPassword();
-		authorities=Arrays.stream(patients.getRole().split(" , "))
-				.map(SimpleGrantedAuthority::new)
+	public PatientInfoPatientDetails(Patients patients) {
+		patientName = patients.getPatientName();
+		patientPassword = patients.getPatientPassword();
+		authorities = Arrays.stream(patients.getRole().split(",")).map(SimpleGrantedAuthority::new)
 				.collect(Collectors.toList());
 	}
 
@@ -37,13 +37,11 @@ public class PatientInfoPatientDetails implements UserDetails {
 
 	@Override
 	public String getPassword() {
-
 		return patientPassword;
 	}
 
 	@Override
 	public String getUsername() {
-
 		return patientName;
 	}
 
@@ -54,19 +52,17 @@ public class PatientInfoPatientDetails implements UserDetails {
 
 	@Override
 	public boolean isAccountNonLocked() {
-
 		return true;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-
 		return true;
 	}
 
 	@Override
 	public boolean isEnabled() {
-
 		return true;
 	}
+
 }

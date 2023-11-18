@@ -7,6 +7,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,12 +20,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hexaware.medicalbillingsystem.dto.AuthRequest;
 import com.hexaware.medicalbillingsystem.dto.InsurancePlansDTO;
 import com.hexaware.medicalbillingsystem.dto.PatientsDTO;
 import com.hexaware.medicalbillingsystem.entities.Patients;
 import com.hexaware.medicalbillingsystem.exceptions.PatientIllegalArgumentsException;
 import com.hexaware.medicalbillingsystem.exceptions.PatientNotFoundException;
 import com.hexaware.medicalbillingsystem.exceptions.PlanNotFoundException;
+import com.hexaware.medicalbillingsystem.service.AuthJWTService;
 import com.hexaware.medicalbillingsystem.service.IInsurancePlansService;
 import com.hexaware.medicalbillingsystem.service.IPatientsService;
 /*
@@ -36,6 +42,12 @@ public class PatientsRestController {
 	Logger logger = LoggerFactory.getLogger(PatientsRestController.class);
 
 	@Autowired
+	AuthenticationManager authenticationManager;
+	
+	@Autowired
+	private AuthJWTService jwtService;
+	
+	@Autowired
 	private IInsurancePlansService planService;
 
 	@Autowired
@@ -47,7 +59,6 @@ public class PatientsRestController {
 	}
 
 	@PostMapping("/add/new")
-	@PreAuthorize("hasAuthority('PATIENTS')")
 	public Patients insertPatients(@RequestBody PatientsDTO patientDTO) {
 
 		Patients patient = service.addPatients(patientDTO);
@@ -73,6 +84,7 @@ public class PatientsRestController {
 	}
 
 	@GetMapping("/getbyname/{patientName}")
+	@PreAuthorize("hasAuthority('PATIENTS')")
 	public PatientsDTO getByPatientName(@PathVariable String patientName) {
 		PatientsDTO patientdto = service.getPatientByName(patientName);
 		if (patientdto.getPatientName() == null) {
@@ -84,7 +96,6 @@ public class PatientsRestController {
 	}
 
 	@GetMapping("/get/allPatients")
-	@PreAuthorize("hasAuthority('PATIENTS')")
 	public List<Patients> getAllPatients() {
 		return service.getAllPatients();
 	}
@@ -97,5 +108,25 @@ public class PatientsRestController {
 					"There is no plan with name " + planName + " ! Kindly Add it");
 		}
 		return planDTO;
+	}
+	@PostMapping("/authenticate")
+	public String authenticateAndGenerateToken(@RequestBody AuthRequest authReq) {
+		
+			Authentication authenticate = authenticationManager.authenticate(
+					new UsernamePasswordAuthenticationToken(authReq.getUsername(), authReq.getPassword()));
+
+			// If authentication is successful, generate a JWT
+			String Token=null;
+			if (authenticate.isAuthenticated()) {
+				Token=jwtService.generateToken(authReq.getUsername());
+				logger.info("JWT Token successfully generated!!!");
+			}
+
+			else {
+				logger.info("Not Found USERNAME!!!!");
+				throw new UsernameNotFoundException("UserName Not Found!!!! ");
+			}
+		 return Token;
+		
 	}
 }

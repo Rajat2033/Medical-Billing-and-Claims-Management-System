@@ -28,10 +28,9 @@ public class PatientsServiceImpl implements IPatientsService {
 	@Override
 	public Patients addPatients(PatientsDTO patientsdto) {
 		Patients patient = new Patients();
-		
 		patient.setPatientName(patientsdto.getPatientName());
 		patient.setPatientEmail(patientsdto.getPatientEmail());
-		patientsdto.setPatientPassword(passwordEncoder.encode(patient.getPatientPassword()));
+		patient.setPatientPassword(passwordEncoder.encode(patientsdto.getPatientPassword()));
 //		patient.setPatientPassword(patientsdto.getPatientPassword());
 		patient.setPatientDOB(patientsdto.getPatientDOB());
 		patient.setPatientGender(patientsdto.getPatientGender());

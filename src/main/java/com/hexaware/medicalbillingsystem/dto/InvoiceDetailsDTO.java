@@ -14,9 +14,8 @@ public class InvoiceDetailsDTO {
 	private LocalDate invoicedueDate;
 	private int invoiceTax;
 	private double invoiceTotalAmount;
-	private Patients patient;
 	private double consultationFee;
-	private double dianosticTestsFeee;
+	private double diagnosticTestsFee;
 	private double diagnosticScanFee;
 
 	public int getInvoiceId() {
@@ -49,23 +48,19 @@ public class InvoiceDetailsDTO {
 	public void setInvoiceTotalAmount(double invoiceTotalAmount) {
 		this.invoiceTotalAmount = invoiceTotalAmount;
 	}
-	public Patients getPatient() {
-		return patient;
-	}
-	public void setPatient(Patients patient) {
-		this.patient = patient;
-	}
+	
 	public double getConsultationFee() {
 		return consultationFee;
 	}
 	public void setConsultationFee(double consultationFee) {
 		this.consultationFee = consultationFee;
 	}
-	public double getDianosticTestsFeee() {
-		return dianosticTestsFeee;
+	
+	public double getDiagnosticTestsFee() {
+		return diagnosticTestsFee;
 	}
-	public void setDianosticTestsFeee(double dianosticTestsFeee) {
-		this.dianosticTestsFeee = dianosticTestsFeee;
+	public void setDiagnosticTestsFee(double diagnosticTestsFee) {
+		this.diagnosticTestsFee = diagnosticTestsFee;
 	}
 	public double getDiagnosticScanFee() {
 		return diagnosticScanFee;

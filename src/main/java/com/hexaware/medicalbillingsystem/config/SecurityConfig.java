@@ -19,26 +19,30 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableMethodSecurity
 public class SecurityConfig {
 
-	// authentication
 	@Bean
-	UserDetailsService userDetailsService() {
+	// authentication
+	public UserDetailsService userDetailsService() {
+//       
 		return new UserInfoUserDetailsService();
 	}
 
 	@Bean
-	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		return http.csrf().disable().authorizeHttpRequests()
-				.requestMatchers("/api/v1/patients/add/new","api/v1/patients/welcome","/api/v1/login/authenticate").permitAll().and().authorizeHttpRequests()
-				.requestMatchers("/api/v1/patients/**").authenticated().and().formLogin().and().build();
+				.requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-resources/**",
+						"/api/v1/patients/authenticate", "/api/v1/patients/add/new","/api/v1/patients/get/allPatients")
+				.permitAll().and().authorizeHttpRequests().requestMatchers("").authenticated().and()
+				.build();
+//		/api/v1/patients/**
 	}
 
 	@Bean
-	PasswordEncoder passwordEncoder() {
+	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 
 	@Bean
-	AuthenticationProvider authenticationProvider() {
+	public AuthenticationProvider authenticationProvider() {
 		DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
 		authenticationProvider.setUserDetailsService(userDetailsService());
 		authenticationProvider.setPasswordEncoder(passwordEncoder());
@@ -46,7 +50,7 @@ public class SecurityConfig {
 	}
 
 	@Bean
-	AuthenticationManager getAuthenticateManager(AuthenticationConfiguration configure) throws Exception {
+	public AuthenticationManager getAuthenticateManager(AuthenticationConfiguration configure) throws Exception {
 		return configure.getAuthenticationManager();
 	}
 
