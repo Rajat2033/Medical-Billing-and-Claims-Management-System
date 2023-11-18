@@ -10,7 +10,11 @@ import com.hexaware.medicalbillingsystem.dto.InvoiceDetailsDTO;
 import com.hexaware.medicalbillingsystem.entities.InvoiceDetails;
 import com.hexaware.medicalbillingsystem.exceptions.NoSuchInvoiceGeneratedException;
 import com.hexaware.medicalbillingsystem.repository.InvoiceDetailsRepository;
-
+/*
+@Author :   Rajat Darvhekar
+Modified Date : 04-11-2023
+Description :Service Implementation class for InvoiceDetailsServiceImpl implementing InvoiceDetailsService
+*/
 @Service
 public class InvoiceDetailsServiceImpl implements IInvoiceDetailsService {
 
