@@ -3,7 +3,11 @@ package com.hexaware.medicalbillingsystem.dto;
 import java.util.Set;
 
 import com.hexaware.medicalbillingsystem.entities.InsuranceClaims;
-
+/*
+@Author :   Rajat Darvhekar  
+Modified Date : 06-11-2023
+Description :DTO class for InsurancePlans containing various properties
+*/
 public class InsurancePlansDTO {
 	private int planId;
 	private String planName;
