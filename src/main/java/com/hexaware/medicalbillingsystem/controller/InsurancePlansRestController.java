@@ -16,7 +16,11 @@ import com.hexaware.medicalbillingsystem.dto.InsurancePlansDTO;
 import com.hexaware.medicalbillingsystem.entities.InsurancePlans;
 import com.hexaware.medicalbillingsystem.exceptions.PlanNotFoundException;
 import com.hexaware.medicalbillingsystem.service.IInsurancePlansService;
-
+/*
+@Author : Hema Sree 
+Modified Date : 14-11-2023
+Description : Controller  InsurancePlans
+*/
 @RestController
 @RequestMapping("/api/insuranceplans")
 public class InsurancePlansRestController {
