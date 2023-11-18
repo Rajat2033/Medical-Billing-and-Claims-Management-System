@@ -12,13 +12,14 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
-
+/*
+@Author : Rajat Darvhekar  
+Modified Date : 28-10-2023
+Description : Entity class for InsuranceClaims containing various properties
+*/
 @Entity
 public class InsuranceClaims implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
