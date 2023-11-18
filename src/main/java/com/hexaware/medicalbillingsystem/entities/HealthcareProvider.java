@@ -14,7 +14,7 @@ import jakarta.validation.constraints.Pattern;
 
 /*
 @Author : Rajat Darvhekar
-Modified Date : 
+Modified Date : 26-10-2023
 Description : Entity class for HealthcareProvider containing various properties
 */
 
