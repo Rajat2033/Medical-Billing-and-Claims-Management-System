@@ -14,14 +14,16 @@ import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
-
+/*
+@Author :  Hema Sree 
+Modified Date : 30-10-2023
+Description : Entity class for InsurancePlans containing various properties
+*/
 
 @Entity
 public class InsurancePlans implements Serializable {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
