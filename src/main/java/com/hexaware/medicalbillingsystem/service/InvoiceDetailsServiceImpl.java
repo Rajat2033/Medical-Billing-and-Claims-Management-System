@@ -29,6 +29,9 @@ public class InvoiceDetailsServiceImpl implements IInvoiceDetailsService {
 		details.setInvoiceTax(detailsDTO.getInvoiceTax());
 		details.setInvoiceTotalAmount(detailsDTO.getInvoiceTotalAmount());
 		details.setPatient(detailsDTO.getPatient());
+		details.setConsultationFee(detailsDTO.getConsultationFee());
+		deails.setDiagnosticTestsFee(detailsDTO.getDiagnosticTestsFee());
+		details.setDiagnosticScanFee(detailsDTO.getDiagnosticScanFee());
 		return repository.save(details);
 	}
 
@@ -49,6 +52,9 @@ public class InvoiceDetailsServiceImpl implements IInvoiceDetailsService {
 		detailsDTO.setInvoiceTax(details.getInvoiceTax());
 		detailsDTO.setInvoiceTotalAmount(details.getInvoiceTotalAmount());
 		detailsDTO.setPatient(details.getPatient());
+		detailsDTO.setConsultationFee(details.getConsultationFee());
+		deailsDTO.setDiagnosticTestsFee(details.getDiagnosticTestsFee());
+		detailsDTO.setDiagnosticScanFee(details.getDiagnosticScanFee());
 		return detailsDTO;
 	}
 
