@@ -1,7 +1,11 @@
 package com.hexaware.medicalbillingsystem.dto;
 
 import com.hexaware.medicalbillingsystem.entities.InsurancePlans;
-
+/*
+@Author :   Rajat Darvhekar 
+Modified Date : 06-11-2023
+Description :DTO class for Patients containing various properties
+*/
 public class PatientsDTO {
 
 	private long patientId;
