@@ -10,7 +10,11 @@ import org.springframework.stereotype.Service;
 import com.hexaware.medicalbillingsystem.dto.HealthcareProviderDTO;
 import com.hexaware.medicalbillingsystem.entities.HealthcareProvider;
 import com.hexaware.medicalbillingsystem.repository.HealthcareProviderRepository;
-
+/*
+@Author :  Hema Sree  
+Modified Date : 02-11-2023
+Description :Service Implementation class for HealthcareProvider implementing IHealthcareProviderService
+*/
 @Service
 public class HealthcareProviderServiceImpl implements IHealthcareProviderService {
 

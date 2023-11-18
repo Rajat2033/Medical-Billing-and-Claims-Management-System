@@ -13,7 +13,11 @@ import com.hexaware.medicalbillingsystem.dto.InsuranceClaimsDTO;
 import com.hexaware.medicalbillingsystem.entities.InsuranceClaims;
 import com.hexaware.medicalbillingsystem.exceptions.ClaimNotValidException;
 import com.hexaware.medicalbillingsystem.repository.InsuranceClaimsRepository;
-
+/*
+@Author :  Hema Sree  
+Modified Date : 04-11-2023
+Description :Service Implementation class for InsuranceClaimsServiceImp implementing IInsuranceClaimsService
+*/
 @Service
 public class InsuranceClaimsServiceImpl implements IInsuranceClaimsService {
 

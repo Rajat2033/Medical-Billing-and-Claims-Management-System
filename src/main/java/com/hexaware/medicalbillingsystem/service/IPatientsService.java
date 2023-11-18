@@ -4,7 +4,11 @@ import java.util.List;
 
 import com.hexaware.medicalbillingsystem.dto.PatientsDTO;
 import com.hexaware.medicalbillingsystem.entities.Patients;
-
+/*
+@Author :  Hema Sree 
+Modified Date : 04-11-2023
+Description : Interface of  IPatientsService performing the following operations
+*/
 
 public interface IPatientsService {
 	

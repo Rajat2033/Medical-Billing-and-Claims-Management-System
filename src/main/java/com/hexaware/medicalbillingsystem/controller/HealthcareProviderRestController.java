@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hexaware.medicalbillingsystem.dto.HealthcareProviderDTO;
 import com.hexaware.medicalbillingsystem.entities.HealthcareProvider;
 import com.hexaware.medicalbillingsystem.service.IHealthcareProviderService;
-
+/*
+@Author :   Rajat Darvhekar  
+Modified Date : 14-11-2023
+Description : Controller  for HealthcareProvider
+*/
 @RestController
 @RequestMapping("/api/v1/provider")
 public class HealthcareProviderRestController {

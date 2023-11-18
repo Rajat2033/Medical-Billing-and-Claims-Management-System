@@ -7,7 +7,11 @@ import org.springframework.stereotype.Repository;
 
 import com.hexaware.medicalbillingsystem.entities.HealthcareProvider;
 import com.hexaware.medicalbillingsystem.entities.InsuranceCompany;
-
+/*
+@Author : Hema Sree   
+Modified Date :08-11-2023
+Description : Repository for InsuranceCompany class extending JpaRepository
+*/
 
 @Repository
 public interface InsuranceCompanyRepository extends JpaRepository<InsuranceCompany, Integer> {

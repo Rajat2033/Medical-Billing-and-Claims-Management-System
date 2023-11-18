@@ -1,5 +1,10 @@
 package com.hexaware.medicalbillingsystem.dto;
-
+/*
+	@Author :  Hema Sree 
+	Modified Date : 06-11-2023
+	Description :DTO class for HealthcareProvider containing various properties
+	*/
+	
 public class HealthcareProviderDTO {
 
 	private int providerId;

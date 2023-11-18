@@ -13,13 +13,16 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+/*
+@Author :  Hema Sree 
+Modified Date : 26-10-2023
+Description : Entity class for Patients containing various properties
+*/
 
 @Entity
 public class Patients implements Serializable {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -12,13 +12,15 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-
+/*
+@Author : Rajat Darvhekar 
+Modified Date : 30-10-2023
+Description : Entity class for InsuranceCompany containing various properties
+*/
 @Entity
 public class InsuranceCompany implements Serializable {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id

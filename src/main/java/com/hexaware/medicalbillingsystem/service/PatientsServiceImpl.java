@@ -11,7 +11,11 @@ import org.springframework.stereotype.Service;
 import com.hexaware.medicalbillingsystem.dto.PatientsDTO;
 import com.hexaware.medicalbillingsystem.entities.Patients;
 import com.hexaware.medicalbillingsystem.repository.PatientRepository;
-
+/*
+@Author :   Rajat Darvhekar  
+Modified Date : 04-11-2023
+Description :Service Implementation class for PatientsServiceImpl implementing PatientsService
+*/
 @Service
 public class PatientsServiceImpl implements IPatientsService {
 

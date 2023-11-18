@@ -16,7 +16,11 @@ import com.hexaware.medicalbillingsystem.service.IHealthcareProviderService;
 import com.hexaware.medicalbillingsystem.service.IInsuranceClaimsService;
 import com.hexaware.medicalbillingsystem.service.IInsurancePlansService;
 import com.hexaware.medicalbillingsystem.service.IPatientsService;
-
+/*
+@Author :  Hema Sree  
+Modified Date : 14-11-2023
+Description : Controller  for Admin 
+*/
 @RestController
 @RequestMapping("/api/v1/admin")
 public class AdminRestController {

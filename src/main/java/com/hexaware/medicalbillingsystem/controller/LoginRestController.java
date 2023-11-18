@@ -11,9 +11,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+<<<<<<< HEAD
 import com.hexaware.medicalbillingsystem.dto.AuthRequest;
 import com.hexaware.medicalbillingsystem.service.AuthJWTService;
 
+=======
+/*
+@Author :  Hema Sree   
+Modified Date : 14-11-2023
+Description : Controller  for Login
+*/
+>>>>>>> 5294ea0a4043e5eafc9eb48d7177d5d043fa09bb
 @RestController
 @RequestMapping("/api/v1/login")
 public class LoginRestController {

@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hexaware.medicalbillingsystem.dto.InsuranceClaimsDTO;
 import com.hexaware.medicalbillingsystem.entities.InsuranceClaims;
 import com.hexaware.medicalbillingsystem.service.IInsuranceClaimsService;
-
+/*
+@Author :  Rajat Darvhekar 
+Modified Date : 14-11-2023
+Description : Controller  InsuranceClaims
+*/
 @RestController
 @RequestMapping("/api/v1/insuranceclaims")
 public class InsuranceClaimsRestController {

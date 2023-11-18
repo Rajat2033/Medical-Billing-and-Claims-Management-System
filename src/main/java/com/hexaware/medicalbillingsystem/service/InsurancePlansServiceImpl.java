@@ -10,7 +10,11 @@ import org.springframework.stereotype.Service;
 import com.hexaware.medicalbillingsystem.dto.InsurancePlansDTO;
 import com.hexaware.medicalbillingsystem.entities.InsurancePlans;
 import com.hexaware.medicalbillingsystem.repository.InsurancePlansRepository;
-
+/*
+@Author :   Rajat Darvhekar  
+Modified Date : 02-11-2023
+Description :Service Implementation class for InsurancePlansServiceImpl implementing IInsurancePlansService
+*/
 @Service
 public class InsurancePlansServiceImpl implements IInsurancePlansService {
 

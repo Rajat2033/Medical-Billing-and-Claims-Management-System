@@ -6,6 +6,11 @@ import org.springframework.stereotype.Repository;
 
 import com.hexaware.medicalbillingsystem.dto.InsuranceClaimsDTO;
 import com.hexaware.medicalbillingsystem.entities.InsuranceClaims;
+/*
+@Author : Hema Sree  
+Modified Date :08-11-2023
+Description : Repository for InsuranceClaims class extending JpaRepository
+*/
 
 @Repository
 public interface InsuranceClaimsRepository extends JpaRepository<InsuranceClaims, Long> {

@@ -12,7 +12,11 @@ import com.hexaware.medicalbillingsystem.dto.InsuranceCompanyDTO;
 import com.hexaware.medicalbillingsystem.entities.InsuranceCompany;
 import com.hexaware.medicalbillingsystem.exceptions.CompanyNotRegisteredException;
 import com.hexaware.medicalbillingsystem.repository.InsuranceCompanyRepository;
-
+/*
+@Author :  Hema Sree 
+Modified Date : 04-11-2023
+Description :Service Implementation class for InsuranceCompanyServiceImpl implementing IInsuranceCompanyService
+*/
 @Service
 public class InsuranceCompanyServiceImpl implements IInsuranceCompanyService {
 
