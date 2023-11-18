@@ -5,8 +5,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
-
+/*
+@Author : Rajat Darvhekar  
+Modified Date : 15-10-2023
+Description : Getting the exception of MedicalExceptionHandler
+*/
 @RestControllerAdvice
 public class MedicalExceptionHandler {
 	
