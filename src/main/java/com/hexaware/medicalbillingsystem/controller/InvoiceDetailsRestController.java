@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hexaware.medicalbillingsystem.dto.InvoiceDetailsDTO;
 import com.hexaware.medicalbillingsystem.entities.InvoiceDetails;
 import com.hexaware.medicalbillingsystem.service.IInvoiceDetailsService;
-
+/*
+@Author :  Hema Sree
+Modified Date : 14-11-2023
+Description : Controller  InvoiceDetails
+*/
 @RestController
 @RequestMapping("/api/v1/invoicedetails")
 public class InvoiceDetailsRestController {
