@@ -21,7 +21,11 @@ import com.hexaware.medicalbillingsystem.exceptions.PatientNotFoundException;
 import com.hexaware.medicalbillingsystem.exceptions.PlanNotFoundException;
 import com.hexaware.medicalbillingsystem.service.IInsurancePlansService;
 import com.hexaware.medicalbillingsystem.service.IPatientsService;
-
+/*
+@Author :  Rajat Darvhekar  
+Modified Date : 14-11-2023
+Description : Controller  for Patients 
+*/
 @RestController
 @RequestMapping("/api/v1/patients")
 public class PatientsRestController {
