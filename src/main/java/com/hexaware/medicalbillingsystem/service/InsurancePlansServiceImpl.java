@@ -2,6 +2,8 @@ package com.hexaware.medicalbillingsystem.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,7 @@ import com.hexaware.medicalbillingsystem.repository.InsurancePlansRepository;
 @Service
 public class InsurancePlansServiceImpl implements IInsurancePlansService {
 
+	Logger logger=LoggerFactory.getLogger(InsurancePlansServiceImpl.class);
 	@Autowired
 	private InsurancePlansRepository repository;
 
@@ -24,13 +27,14 @@ public class InsurancePlansServiceImpl implements IInsurancePlansService {
 		plans.setPlanCoverAmount(plansdto.getPlanCoverAmount());
 		plans.setPlanEmi(plansdto.getPlanEmi());
 		plans.setPlanDetails(plansdto.getPlanDetails());
-
+		logger.info("New insurance plan is added!!!");
 		return repository.save(plans);
 	}
 
 	@Override
 	public void deleteInsurancePlan(int planId) {
 
+		logger.warn("Insurance plans "+planId+" is deleted!!!");
 		repository.deleteById(planId);
 
 	}
@@ -46,6 +50,7 @@ public class InsurancePlansServiceImpl implements IInsurancePlansService {
 		planDTO.setPlanEmi(plans.getPlanEmi());
 		planDTO.setPlanDetails(plans.getPlanDetails());
 		planDTO.setClaims(plans.getClaims());
+		logger.info("Insurance plan "+planName+" is displayed!!!");;
 		return planDTO;
 
 	}
@@ -67,6 +72,7 @@ public class InsurancePlansServiceImpl implements IInsurancePlansService {
 		plans.setPlanEmi(plansdto.getPlanEmi());
 		plans.setPlanDetails(plansdto.getPlanDetails());
 
+		logger.warn("Insurance plan is updated!!!");
 		return repository.save(plans);
 	}
 

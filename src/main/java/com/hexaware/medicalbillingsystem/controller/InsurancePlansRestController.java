@@ -21,6 +21,7 @@ import com.hexaware.medicalbillingsystem.service.IInsurancePlansService;
 @RequestMapping("/api/insuranceplans")
 public class InsurancePlansRestController {
 
+
 	@Autowired
 	private IInsurancePlansService service;
 
@@ -36,9 +37,9 @@ public class InsurancePlansRestController {
 	}
 
 	@DeleteMapping("/delete/plan/{planId}")
-	public String deletePlans(@PathVariable int planId) {
+	public void deletePlans(@PathVariable int planId) {
 		service.deleteInsurancePlan(planId);
-		return "Plan with id " + planId + " deleted";
+		
 	}
 
 	@GetMapping("/getplanbyname/{planName}")

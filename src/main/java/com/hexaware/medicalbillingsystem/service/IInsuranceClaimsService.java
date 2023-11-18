@@ -11,7 +11,7 @@ public interface IInsuranceClaimsService {
 
 	public InsuranceClaims updateClaimStatus(InsuranceClaimsDTO claimsDTO,long claimId);
 
-	public String approveClaim(int claimid);
+	
  
 	public InsuranceClaimsDTO getById(long claimId);
 	 

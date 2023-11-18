@@ -2,6 +2,8 @@ package com.hexaware.medicalbillingsystem.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,8 @@ import com.hexaware.medicalbillingsystem.repository.HealthcareProviderRepository
 @Service
 public class HealthcareProviderServiceImpl implements IHealthcareProviderService {
 
+	Logger logger=LoggerFactory.getLogger(HealthcareProviderServiceImpl.class);
+	
 	@Autowired
 	private HealthcareProviderRepository repository;
 
@@ -27,6 +31,7 @@ public class HealthcareProviderServiceImpl implements IHealthcareProviderService
 		provider.setProviderDesignation(providerdto.getProviderDesignation());
 		provider.setProviderExperience(providerdto.getProviderExperience());
 		provider.setProviderQualification(providerdto.getProviderQualification());
+		logger.info("Provider is successfully added!!!!!");
 		return repository.save(provider);
 	}
 
@@ -43,17 +48,20 @@ public class HealthcareProviderServiceImpl implements IHealthcareProviderService
 		provider.setProviderDesignation(providerdto.getProviderDesignation());
 		provider.setProviderExperience(providerdto.getProviderExperience());
 		provider.setProviderQualification(providerdto.getProviderQualification());
+		logger.info("Provider is updated sucessfully!!!!!");
 		return repository.save(provider);
 	}
 
 	@Override
 	public void deleteProvider(int providerId) {
+		logger.warn("Provider with id "+providerId+" is deleted!!!");
 		repository.deleteById(providerId);
 
 	}
 
 	@Override
 	public List<HealthcareProvider> getAllHealthcareProviders() {
+		logger.info("All HealthcareProvider Data is fetched!!!!!");
 		return repository.findAll();
 	}
 
@@ -72,6 +80,7 @@ public class HealthcareProviderServiceImpl implements IHealthcareProviderService
 		providerdto.setProviderDesignation(provider.getProviderDesignation());
 		providerdto.setProviderExperience(provider.getProviderExperience());
 		providerdto.setProviderQualification(provider.getProviderQualification());
+		logger.info("Provider with id "+providerId+" is fetched!!");
 		return providerdto;
 	}
 

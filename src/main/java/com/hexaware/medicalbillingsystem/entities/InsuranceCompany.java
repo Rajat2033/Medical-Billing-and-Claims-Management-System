@@ -37,6 +37,7 @@ public class InsuranceCompany implements Serializable {
 	@NotBlank
 	private String companyContact;
 	private String companyStartYears;
+	private final  String role="COMPANY";
 
 	public InsuranceCompany() {
 		super();
@@ -53,6 +54,10 @@ public class InsuranceCompany implements Serializable {
 		this.companyEmail = companyEmail;
 		this.companyContact = companyContact;
 		this.companyStartYears = companyStartYears;
+	}
+
+	public String getRole() {
+		return role;
 	}
 
 	public int getCompanyId() {

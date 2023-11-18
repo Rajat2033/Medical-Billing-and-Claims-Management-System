@@ -49,6 +49,7 @@ public class HealthcareProvider implements Serializable {
 	private int providerExperience;
 	private String providerQualification;
 
+	private final String role="PROVIDER";
 	public HealthcareProvider() {
 		super();
 	}
@@ -67,6 +68,10 @@ public class HealthcareProvider implements Serializable {
 		this.providerDesignation = providerDesignation;
 		this.providerExperience = providerExperience;
 		this.providerQualification = providerQualification;
+	}
+
+	public String getRole() {
+		return role;
 	}
 
 	public int getProviderId() {

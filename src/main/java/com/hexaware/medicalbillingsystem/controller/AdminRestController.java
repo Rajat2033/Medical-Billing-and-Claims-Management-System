@@ -3,6 +3,7 @@ package com.hexaware.medicalbillingsystem.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,11 +34,13 @@ public class AdminRestController {
 	private IInsurancePlansService planService;
 
 	@GetMapping("/welcome")
+	
 	public String heyAdmin() {
 		return "Welcome Admin";
 	}
 
 	@GetMapping("/getallpatients")
+	
 	public List<Patients> getAllPatients() {
 		return patientService.getAllPatients();
 	}

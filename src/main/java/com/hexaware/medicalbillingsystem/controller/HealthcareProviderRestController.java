@@ -45,7 +45,7 @@ public class HealthcareProviderRestController {
 	@DeleteMapping("/delete/provider")
 	public String deleteProvider(int providerId) {
 		service.deleteProvider(providerId);
-		return "Providet with id " + providerId + " is deleted";
+		return "Provider with id " + providerId + " is deleted";
 	}
 
 	@GetMapping("/getById/{providerId}")

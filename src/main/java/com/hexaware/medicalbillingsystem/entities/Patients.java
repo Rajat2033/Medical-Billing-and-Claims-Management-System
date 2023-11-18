@@ -22,7 +22,7 @@ public class Patients implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Min(value = 1)
 	private long patientId;
 	@NotBlank
@@ -43,6 +43,7 @@ public class Patients implements Serializable {
 	@JoinColumn(name = "planId")
 	private InsurancePlans plans;
 
+	private final String role="PATIENTS";
 	public Patients() {
 		super();
 
@@ -63,6 +64,10 @@ public class Patients implements Serializable {
 		this.patientAddress = patientAddress;
 		this.patientDisease = patientDisease;
 		this.plans = plans;
+	}
+
+	public String getRole() {
+		return role;
 	}
 
 	public long getPatientId() {

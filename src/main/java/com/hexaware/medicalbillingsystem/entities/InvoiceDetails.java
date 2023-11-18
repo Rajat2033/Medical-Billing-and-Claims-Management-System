@@ -9,13 +9,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class InvoiceDetails {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@SequenceGenerator(name="invoiceSeq",initialValue = 500,allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "invoiceSeq")
 	private int invoiceId;
 	private LocalDate invoiceDate;
 	private LocalDate invoiceDueDate;

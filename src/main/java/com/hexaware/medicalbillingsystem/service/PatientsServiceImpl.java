@@ -2,7 +2,10 @@ package com.hexaware.medicalbillingsystem.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.hexaware.medicalbillingsystem.dto.PatientsDTO;
@@ -12,21 +15,27 @@ import com.hexaware.medicalbillingsystem.repository.PatientRepository;
 @Service
 public class PatientsServiceImpl implements IPatientsService {
 
+	Logger logger = LoggerFactory.getLogger(PatientsServiceImpl.class);
 	@Autowired
 	private PatientRepository repository;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@Override
 	public Patients addPatients(PatientsDTO patientsdto) {
 		Patients patient = new Patients();
+		
 		patient.setPatientName(patientsdto.getPatientName());
 		patient.setPatientEmail(patientsdto.getPatientEmail());
-		patient.setPatientPassword(patientsdto.getPatientPassword());
+		patientsdto.setPatientPassword(passwordEncoder.encode(patient.getPatientPassword()));
+//		patient.setPatientPassword(patientsdto.getPatientPassword());
 		patient.setPatientDOB(patientsdto.getPatientDOB());
 		patient.setPatientGender(patientsdto.getPatientGender());
 		patient.setPatientContact(patientsdto.getPatientContact());
 		patient.setPatientAddress(patientsdto.getPatientAddress());
 		patient.setPatientDisease(patientsdto.getPatientDisease());
-		patient.setPlans(patientsdto.getPlans());
+		
+		logger.info("New patient/user registered with us!!!");
 		return repository.save(patient);
 	}
 
@@ -47,6 +56,7 @@ public class PatientsServiceImpl implements IPatientsService {
 
 	@Override
 	public void deletePatients(long patientId) {
+		logger.warn("Patient with id " + patientId + " is deleted!!!!");
 		repository.deleteById(patientId);
 
 	}
@@ -72,6 +82,12 @@ public class PatientsServiceImpl implements IPatientsService {
 	public List<Patients> getAllPatients() {
 
 		return repository.findAll();
+	}
+
+	@Override
+	public boolean loginPatient(String patientEmail, String password) {
+
+		return false;
 	}
 
 }

@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
 
@@ -21,7 +22,8 @@ public class InsuranceClaims implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@SequenceGenerator(name="claimSeq",initialValue = 10,allocationSize = 2)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "claimSeq")
 	private long claimId;
 
 	@DecimalMin(value = "40000.00")

@@ -2,6 +2,8 @@ package com.hexaware.medicalbillingsystem.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,7 @@ import com.hexaware.medicalbillingsystem.repository.InsuranceCompanyRepository;
 @Service
 public class InsuranceCompanyServiceImpl implements IInsuranceCompanyService {
 
+	Logger logger=LoggerFactory.getLogger(InsuranceCompanyServiceImpl.class);
 	@Autowired
 	private InsuranceCompanyRepository repository;
 
@@ -26,6 +29,7 @@ public class InsuranceCompanyServiceImpl implements IInsuranceCompanyService {
 		company.setCompanyEmail(companydto.getCompanyEmail());
 		company.setCompanyContact(companydto.getCompanyContact());
 		company.setCompanyStartYears(companydto.getCompanyStartYears());
+		logger.info("New Insurance Company is registered with us!!!");
 		return repository.save(company);
 	}
 
@@ -44,6 +48,7 @@ public class InsuranceCompanyServiceImpl implements IInsuranceCompanyService {
 
 	@Override
 	public void deleteCompanyById(int companyId) {
+		logger.warn("Insurance Company with id "+companyId+" is deleted!!!!");
 		repository.deleteById(companyId);
 
 	}
@@ -61,7 +66,7 @@ public class InsuranceCompanyServiceImpl implements IInsuranceCompanyService {
 		companyDTO.setCompanyEmail(company.getCompanyEmail());
 		companyDTO.setCompanyContact(company.getCompanyContact());
 		companyDTO.setCompanyStartYears(company.getCompanyStartYears());
-
+		logger.info("Company with name "+companyName+" is displayed!!!!");
 		return companyDTO;
 	}
 

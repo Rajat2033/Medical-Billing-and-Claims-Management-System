@@ -2,8 +2,11 @@ package com.hexaware.medicalbillingsystem.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,9 +29,11 @@ import com.hexaware.medicalbillingsystem.service.IPatientsService;
 @RequestMapping("/api/v1/patients")
 public class PatientsRestController {
 
+	Logger logger = LoggerFactory.getLogger(PatientsRestController.class);
+
 	@Autowired
 	private IInsurancePlansService planService;
-	
+
 	@Autowired
 	private IPatientsService service;
 
@@ -38,11 +43,13 @@ public class PatientsRestController {
 	}
 
 	@PostMapping("/add/new")
+	@PreAuthorize("hasAuthority('PATIENTS')")
 	public Patients insertPatients(@RequestBody PatientsDTO patientDTO) {
 
 		Patients patient = service.addPatients(patientDTO);
 
 		if (patient.getPatientName() == null || patient.getPatientGender() == null) {
+			logger.error("Patient has entered wrong data!!!");
 			throw new PatientIllegalArgumentsException(HttpStatus.BAD_REQUEST, "You have entered Invalid values.");
 		}
 		return patient;
@@ -58,13 +65,14 @@ public class PatientsRestController {
 	public String deletePatients(@PathVariable int patientId) {
 
 		service.deletePatients(patientId);
-		return "Successfully Delete patient with id: " + patientId;
+		return "Successfully Deleted patient with id: " + patientId;
 	}
 
 	@GetMapping("/getbyname/{patientName}")
 	public PatientsDTO getByPatientName(@PathVariable String patientName) {
 		PatientsDTO patientdto = service.getPatientByName(patientName);
 		if (patientdto.getPatientName() == null) {
+			logger.error("Patient with name " + patientName + " is not registered with us!!!!");
 			throw new PatientNotFoundException(HttpStatus.NOT_FOUND,
 					"Patient with name " + patientName + " does not exist");
 		}
@@ -72,6 +80,7 @@ public class PatientsRestController {
 	}
 
 	@GetMapping("/get/allPatients")
+	@PreAuthorize("hasAuthority('PATIENTS')")
 	public List<Patients> getAllPatients() {
 		return service.getAllPatients();
 	}
