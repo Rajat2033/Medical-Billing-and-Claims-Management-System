@@ -3,7 +3,11 @@ package com.hexaware.medicalbillingsystem.dto;
 import java.time.LocalDate;
 
 import com.hexaware.medicalbillingsystem.entities.Patients;
-
+/*
+@Author :  Rajat Darvhekar 
+Modified Date : 06-11-2023
+Description :DTO class for InvoiceDetails containing various properties
+*/
 public class InvoiceDetailsDTO {
 	private int invoiceId;
 	private LocalDate invoiceDate;
