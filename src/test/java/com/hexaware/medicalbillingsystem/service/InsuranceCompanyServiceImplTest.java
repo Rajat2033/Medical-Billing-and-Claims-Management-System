@@ -20,7 +20,7 @@ import com.hexaware.medicalbillingsystem.repository.InsuranceCompanyRepository;
 /*
 @Author : Rajat Darvhekar 
 Modified Date : 18-11-2023
-Description : ServiceImpTest for the InsuranceCompany
+Description : ServiceImpTest class for the InsuranceCompany
 */
 class InsuranceCompanyServiceImplTest {
 
