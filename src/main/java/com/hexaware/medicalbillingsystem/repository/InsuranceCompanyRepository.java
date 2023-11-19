@@ -4,8 +4,6 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import com.hexaware.medicalbillingsystem.entities.HealthcareProvider;
 import com.hexaware.medicalbillingsystem.entities.InsuranceCompany;
 /*
 @Author : Hema Sree   

@@ -87,10 +87,5 @@ public class PatientsServiceImpl implements IPatientsService {
 		return repository.findAll();
 	}
 
-	@Override
-	public boolean loginPatient(String patientEmail, String password) {
-
-		return false;
-	}
 
 }

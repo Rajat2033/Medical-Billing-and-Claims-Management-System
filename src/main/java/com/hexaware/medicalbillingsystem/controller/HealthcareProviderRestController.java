@@ -5,6 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -41,22 +42,19 @@ public class HealthcareProviderRestController {
 	@Autowired
 	private  IHealthcareProviderService service;
 
-	@GetMapping("/welcome")
-	public String newProvider() {
-		return "Hello New Provider";
-	}
-
 	@PostMapping(path="/add/provider",consumes = "application/json",produces="application/json")
 	public HealthcareProvider insertNewProvider(@RequestBody HealthcareProviderDTO providerdto) {
 		return service.addProvider(providerdto);
 	}
 
 	@PutMapping("/update/provider")
+	@PreAuthorize("hasAuthority('PROVIDER')")
 	public HealthcareProvider updateprovider(@RequestBody HealthcareProviderDTO providerdto) {
 		return service.updateProvider(providerdto);
 	}
 
 	@GetMapping("/getall/provider")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public List<HealthcareProvider> getAllProviders() {
 		return service.getAllHealthcareProviders();
 	}

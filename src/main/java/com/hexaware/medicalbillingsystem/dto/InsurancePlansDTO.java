@@ -1,8 +1,6 @@
 package com.hexaware.medicalbillingsystem.dto;
 
-import java.util.Set;
 
-import com.hexaware.medicalbillingsystem.entities.InsuranceClaims;
 /*
 @Author :   Rajat Darvhekar  
 Modified Date : 06-11-2023
@@ -15,8 +13,7 @@ public class InsurancePlansDTO {
 	private double planCoverAmount;
 	private double planEmi;
 	private String planDetails;
-	Set<InsuranceClaims> claims;
-
+	
 	public int getPlanId() {
 		return planId;
 	}
@@ -65,12 +62,5 @@ public class InsurancePlansDTO {
 		this.planDetails = planDetails;
 	}
 
-	public Set<InsuranceClaims> getClaims() {
-		return claims;
-	}
-
-	public void setClaims(Set<InsuranceClaims> claims) {
-		this.claims = claims;
-	}
-
+	
 }

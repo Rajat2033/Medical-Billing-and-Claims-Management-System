@@ -17,6 +17,6 @@ public interface IPatientsService {
 	public void deletePatients(long patientId);
 	public PatientsDTO getPatientByName(String patientName);
 	public List<Patients> getAllPatients();
-	public boolean loginPatient(String patientEmail,String password);
+//	public boolean loginPatient(String patientEmail,String password);
 
 }

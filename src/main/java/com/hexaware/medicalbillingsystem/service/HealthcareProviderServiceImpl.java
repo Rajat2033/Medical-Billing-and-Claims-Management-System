@@ -5,6 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.hexaware.medicalbillingsystem.dto.HealthcareProviderDTO;
@@ -23,12 +24,16 @@ public class HealthcareProviderServiceImpl implements IHealthcareProviderService
 	@Autowired
 	private HealthcareProviderRepository repository;
 
+	@Autowired
+	PasswordEncoder encoder;
+	
 	@Override
 	public HealthcareProvider addProvider(HealthcareProviderDTO providerdto) {
 		HealthcareProvider provider = new HealthcareProvider();
 
 		provider.setProviderName(providerdto.getProviderName());
-		provider.setProviderPassword(providerdto.getProviderPassword());
+		provider.setProviderPassword(encoder.encode(providerdto.getProviderPassword()));
+//		provider.setProviderPassword(providerdto.getProviderPassword());
 		provider.setProviderEmail(providerdto.getProviderEmail());
 		provider.setProviderGender(providerdto.getProviderGender());
 		provider.setProviderSpeciality(providerdto.getProviderSpeciality());
@@ -45,7 +50,7 @@ public class HealthcareProviderServiceImpl implements IHealthcareProviderService
 		HealthcareProvider provider = new HealthcareProvider();
 		provider.setProviderId(providerdto.getProviderId());
 		provider.setProviderName(providerdto.getProviderName());
-		provider.setProviderPassword(providerdto.getProviderPassword());
+		provider.setProviderPassword(encoder.encode(providerdto.getProviderPassword()));
 		provider.setProviderEmail(providerdto.getProviderEmail());
 		provider.setProviderGender(providerdto.getProviderGender());
 		provider.setProviderSpeciality(providerdto.getProviderSpeciality());

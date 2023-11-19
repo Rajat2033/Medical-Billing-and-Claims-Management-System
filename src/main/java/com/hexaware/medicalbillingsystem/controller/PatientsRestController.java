@@ -30,6 +30,7 @@ import com.hexaware.medicalbillingsystem.exceptions.PlanNotFoundException;
 import com.hexaware.medicalbillingsystem.service.AuthJWTService;
 import com.hexaware.medicalbillingsystem.service.IInsurancePlansService;
 import com.hexaware.medicalbillingsystem.service.IPatientsService;
+
 /*
 @Author :  Rajat Darvhekar  
 Modified Date : 14-11-2023
@@ -43,20 +44,15 @@ public class PatientsRestController {
 
 	@Autowired
 	AuthenticationManager authenticationManager;
-	
+
 	@Autowired
 	private AuthJWTService jwtService;
-	
+
 	@Autowired
 	private IInsurancePlansService planService;
 
 	@Autowired
 	private IPatientsService service;
-
-	@GetMapping("/welcome")
-	public String newPatient() {
-		return "Hello New Patient";
-	}
 
 	@PostMapping("/add/new")
 	public Patients insertPatients(@RequestBody PatientsDTO patientDTO) {
@@ -71,12 +67,14 @@ public class PatientsRestController {
 	}
 
 	@PutMapping("/update/patient")
+	@PreAuthorize("hasAuthority('PATIENTS')")
 	public Patients updatePatient(@RequestBody PatientsDTO patientDTO) {
 		return service.updatepatients(patientDTO);
 
 	}
 
 	@DeleteMapping("/delete/patient/{patientId}")
+
 	public String deletePatients(@PathVariable int patientId) {
 
 		service.deletePatients(patientId);
@@ -101,6 +99,7 @@ public class PatientsRestController {
 	}
 
 	@GetMapping("/searchplanbyname/{planName}")
+	@PreAuthorize("hasAuthority('PATIENTS')")
 	public InsurancePlansDTO getPlanByNamee(@PathVariable String planName) {
 		InsurancePlansDTO planDTO = planService.getPlanByName(planName);
 		if (planDTO.getPlanName() == null) {
@@ -109,24 +108,25 @@ public class PatientsRestController {
 		}
 		return planDTO;
 	}
+
 	@PostMapping("/authenticate")
 	public String authenticateAndGenerateToken(@RequestBody AuthRequest authReq) {
-		
-			Authentication authenticate = authenticationManager.authenticate(
-					new UsernamePasswordAuthenticationToken(authReq.getUsername(), authReq.getPassword()));
 
-			// If authentication is successful, generate a JWT
-			String Token=null;
-			if (authenticate.isAuthenticated()) {
-				Token=jwtService.generateToken(authReq.getUsername());
-				logger.info("JWT Token successfully generated!!!");
-			}
+		Authentication authenticate = authenticationManager
+				.authenticate(new UsernamePasswordAuthenticationToken(authReq.getUsername(), authReq.getPassword()));
 
-			else {
-				logger.info("Not Found USERNAME!!!!");
-				throw new UsernameNotFoundException("UserName Not Found!!!! ");
-			}
-		 return Token;
-		
+		// If authentication is successful, generate a JWT
+		String Token = null;
+		if (authenticate.isAuthenticated()) {
+			Token = jwtService.generateToken(authReq.getUsername());
+			logger.info("JWT Token successfully generated!!!");
+		}
+
+		else {
+			logger.info("Not Found USERNAME!!!!");
+			throw new UsernameNotFoundException("UserName Not Found!!!! ");
+		}
+		return Token;
+
 	}
 }

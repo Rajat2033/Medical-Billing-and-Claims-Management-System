@@ -6,15 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 
-
+import com.hexaware.medicalbillingsystem.entities.AdminMedical;
 import com.hexaware.medicalbillingsystem.entities.HealthcareProvider;
 import com.hexaware.medicalbillingsystem.entities.InsuranceCompany;
 import com.hexaware.medicalbillingsystem.entities.Patients;
+import com.hexaware.medicalbillingsystem.repository.AdminRepository;
 import com.hexaware.medicalbillingsystem.repository.HealthcareProviderRepository;
 import com.hexaware.medicalbillingsystem.repository.InsuranceCompanyRepository;
 import com.hexaware.medicalbillingsystem.repository.PatientRepository;
-
+@Component
 public class UserInfoUserDetailsService implements UserDetailsService {
 
 	@Autowired
@@ -25,11 +27,16 @@ public class UserInfoUserDetailsService implements UserDetailsService {
 	
 	@Autowired
 	private InsuranceCompanyRepository companyRepository;
+	
+	@Autowired
+	private AdminRepository adminRepository;
+	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Optional<Patients> patient=patientRepository.findByPatientName(username);
 		Optional<HealthcareProvider> provider=providerRepository.findByProviderName(username);
 		Optional<InsuranceCompany> company=companyRepository.findByCompanyName(username);
+		Optional<AdminMedical> adminInfo=adminRepository.findByAdminName(username);
 		
 		if(patient.isPresent())
 		{
@@ -49,6 +56,12 @@ public class UserInfoUserDetailsService implements UserDetailsService {
 
 	        return company.map(CompanyInfoCompanyDetails::new)
 	                .orElseThrow(() -> new UsernameNotFoundException("Company not found " + username));
+		}
+		if(adminInfo.isPresent())
+		{
+
+	        return adminInfo.map(AdminInfoAdminDetails::new)
+	                .orElseThrow(() -> new UsernameNotFoundException("Admin not found " + username));
 		}
 		throw new UsernameNotFoundException("UserName Not Found :"+username);
 	}

@@ -2,7 +2,7 @@ package com.hexaware.medicalbillingsystem.dto;
 
 import java.time.LocalDate;
 
-import com.hexaware.medicalbillingsystem.entities.Patients;
+
 /*
 @Author :  Rajat Darvhekar 
 Modified Date : 06-11-2023

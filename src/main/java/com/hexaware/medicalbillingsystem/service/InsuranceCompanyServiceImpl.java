@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.hexaware.medicalbillingsystem.dto.InsuranceCompanyDTO;
@@ -24,12 +25,15 @@ public class InsuranceCompanyServiceImpl implements IInsuranceCompanyService {
 	@Autowired
 	private InsuranceCompanyRepository repository;
 
+	@Autowired
+	PasswordEncoder encoder;
 	@Override
 	public InsuranceCompany addCompany(InsuranceCompanyDTO companydto) {
 
 		InsuranceCompany company = new InsuranceCompany();
 		company.setCompanyName(companydto.getCompanyName());
-		company.setCompanyPassword(companydto.getCompanyPassword());
+		company.setCompanyPassword(encoder.encode(companydto.getCompanyPassword()));
+//		company.setCompanyPassword(companydto.getCompanyPassword());
 		company.setCompanyEmail(companydto.getCompanyEmail());
 		company.setCompanyContact(companydto.getCompanyContact());
 		company.setCompanyStartYears(companydto.getCompanyStartYears());
@@ -43,7 +47,7 @@ public class InsuranceCompanyServiceImpl implements IInsuranceCompanyService {
 		InsuranceCompany company = new InsuranceCompany();
 		company.setCompanyId(companydto.getCompanyId());
 		company.setCompanyName(companydto.getCompanyName());
-		company.setCompanyPassword(companydto.getCompanyPassword());
+		company.setCompanyPassword(encoder.encode(companydto.getCompanyPassword()));
 		company.setCompanyEmail(companydto.getCompanyEmail());
 		company.setCompanyContact(companydto.getCompanyContact());
 		company.setCompanyStartYears(companydto.getCompanyStartYears());

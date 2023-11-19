@@ -2,6 +2,7 @@ package com.hexaware.medicalbillingsystem.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,17 +26,15 @@ public class InsuranceClaimsRestController {
 	@Autowired
 	 private IInsuranceClaimsService claimService;
 
-	@GetMapping("/new")
-	public String getString() {
-		return "Hello new Claim";
-	}
 
 	@PostMapping(path="/add/newclaim",consumes = "application/json",produces="application/json")
+	@PreAuthorize("hasAuthority('PATIENTS')")
 	public InsuranceClaims insertNewClaim(@RequestBody InsuranceClaimsDTO claimDTO) {
 		return claimService.insertClaims(claimDTO);
 	}
 
 	@PutMapping("/update/claim/{claimId}")
+	@PreAuthorize("hasAuthority('COMPANY')")
 	public InsuranceClaims updateStatus(@RequestBody InsuranceClaimsDTO claimDTO,@PathVariable long claimId) {
 		return claimService.updateClaimStatus(claimDTO,claimId);
 	}
@@ -46,6 +45,7 @@ public class InsuranceClaimsRestController {
 	}
 
 	@GetMapping("/getall/approvedclaims/{claimStatus}")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public InsuranceClaimsDTO getAllApprovedClaims(@PathVariable String claimStatus) {
 		return claimService.getTotalApprovedClaims(claimStatus);
 

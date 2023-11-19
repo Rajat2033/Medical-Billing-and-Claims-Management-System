@@ -1,7 +1,7 @@
 package com.hexaware.medicalbillingsystem.dto;
 
-import com.hexaware.medicalbillingsystem.entities.InsurancePlans;
-import com.hexaware.medicalbillingsystem.entities.Patients;
+
+
 /*
 @Author :  Hema Sree 
 Modified Date : 06-11-2023
@@ -12,8 +12,7 @@ public class InsuranceClaimsDTO {
 	private double claimAmount;
 	private String claimStatus;
 	private double invoiceAmount;
-	private Patients patient;
-	private InsurancePlans plans;
+	
 
 	public long getClaimId() {
 		return claimId;
@@ -39,21 +38,8 @@ public class InsuranceClaimsDTO {
 		this.claimStatus = claimStatus;
 	}
 
-	public Patients getPatient() {
-		return patient;
-	}
+	
 
-	public void setPatient(Patients patient) {
-		this.patient = patient;
-	}
-
-	public InsurancePlans getPlans() {
-		return plans;
-	}
-
-	public void setPlans(InsurancePlans plans) {
-		this.plans = plans;
-	}
 
 	public double getInvoiceAmount() {
 		return invoiceAmount;

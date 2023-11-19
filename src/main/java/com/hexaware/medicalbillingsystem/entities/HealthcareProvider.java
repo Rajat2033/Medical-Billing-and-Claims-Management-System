@@ -34,7 +34,7 @@ public class HealthcareProvider implements Serializable {
 	@NotBlank
 	private String providerName;
 
-	@Pattern(regexp = "^[a-zA-Z0-9]{6}", message = "Letter must be 6")
+//	@Pattern(regexp = "^[a-zA-Z0-9]{6}", message = "Letter must be 6")
 	private String providerPassword;
 
 	@Email

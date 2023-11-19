@@ -1,5 +1,6 @@
 package com.hexaware.medicalbillingsystem.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -9,20 +10,27 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import com.hexaware.medicalbillingsystem.filter.JWTAuthFilter;
 
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SecurityConfig {
 
+	@Autowired()
+	JWTAuthFilter authFilter;
+
 	@Bean
 	// authentication
 	public UserDetailsService userDetailsService() {
-//       
+
 		return new UserInfoUserDetailsService();
 	}
 
@@ -30,10 +38,18 @@ public class SecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		return http.csrf().disable().authorizeHttpRequests()
 				.requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-resources/**",
-						"/api/v1/patients/authenticate", "/api/v1/patients/add/new","/api/v1/patients/get/allPatients")
-				.permitAll().and().authorizeHttpRequests().requestMatchers("").authenticated().and()
-				.build();
-//		/api/v1/patients/**
+						"/api/v1/patients/authenticate", "/api/v1/patients/add/new", "/api/v1/patients/get/allPatients",
+						"/api/v1/provider/authenticate", "/api/v1/provider/add/provider",
+						"/api/v1/companies/authenticate", "/api/v1/companies/add/company",
+						"/api/v1/admin/authenticate","/api/v1/admin/add")
+				.permitAll().and().authorizeHttpRequests()
+				.requestMatchers("/api/v1/patients/**", "/api/v1/provider/**", "/api/v1/companies/**",
+						"/api/v1/insuranceplans/**", "/api/v1/insuranceclaims/**","/api/v1/admin/**")
+				.authenticated().and() // .formLogin().and().build();
+				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+				.authenticationProvider(authenticationProvider())
+				.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class).build();
+
 	}
 
 	@Bean

@@ -13,6 +13,7 @@ import com.hexaware.medicalbillingsystem.dto.InsuranceClaimsDTO;
 import com.hexaware.medicalbillingsystem.entities.InsuranceClaims;
 import com.hexaware.medicalbillingsystem.exceptions.ClaimNotValidException;
 import com.hexaware.medicalbillingsystem.repository.InsuranceClaimsRepository;
+
 /*
 @Author :  Hema Sree  
 Modified Date : 04-11-2023
@@ -47,9 +48,9 @@ public class InsuranceClaimsServiceImpl implements IInsuranceClaimsService {
 		claimdto.setClaimId(claim.getClaimId());
 		claimdto.setClaimAmount(claim.getClaimAmount());
 		claimdto.setClaimStatus(claim.getClaimStatus());
-		claimdto.setPatient(claim.getPatient());
+
 		claimdto.setInvoiceAmount(claim.getInvoiceAmount());
-		logger.info("Fetched Claims for id "+claimId);
+		logger.info("Fetched Claims for id " + claimId);
 		return claimdto;
 	}
 
@@ -59,8 +60,7 @@ public class InsuranceClaimsServiceImpl implements IInsuranceClaimsService {
 		claims.setClaimAmount(claimDTO.getClaimAmount());
 		claims.setClaimStatus(claimDTO.getClaimStatus());
 		claims.setInvoiceAmount(claimDTO.getInvoiceAmount());
-		claims.setPatient(claimDTO.getPatient());
-		claims.setPlans(claimDTO.getPlans());
+		
 		logger.info("Claim is proceeded!!!");
 		return repository.save(claims);
 	}
@@ -74,8 +74,7 @@ public class InsuranceClaimsServiceImpl implements IInsuranceClaimsService {
 
 			claims.setClaimAmount(claimsDTO.getClaimAmount());
 			claims.setClaimStatus(claimsDTO.getClaimStatus());
-			claims.setPatient(claimsDTO.getPatient());
-			claims.setPlans(claimsDTO.getPlans());
+			
 			claims.setInvoiceAmount(claimsDTO.getInvoiceAmount());
 		} else {
 			logger.error("Claim Id Not Found!!!!");

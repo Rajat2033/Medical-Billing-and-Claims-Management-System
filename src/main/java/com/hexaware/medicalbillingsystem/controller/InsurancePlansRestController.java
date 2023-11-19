@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,20 +23,16 @@ Modified Date : 14-11-2023
 Description : Controller  InsurancePlans
 */
 @RestController
-@RequestMapping("/api/insuranceplans")
+@RequestMapping("/api/v1/insuranceplans")
 public class InsurancePlansRestController {
 
 
 	@Autowired
 	private IInsurancePlansService service;
 
-	@GetMapping("/welcome")
-	public String visitor() {
-		return "Welcome to our website Add Your Plans";
-
-	}
 
 	@PostMapping(path="/add/plan",consumes = "application/json",produces="application/json")
+	@PreAuthorize("hasAuthority('COMPANY')")
 	public InsurancePlans addNewPlan(@RequestBody InsurancePlansDTO plansdto) {
 		return service.addInsurancePlan(plansdto);
 	}
@@ -47,6 +44,7 @@ public class InsurancePlansRestController {
 	}
 
 	@GetMapping("/getplanbyname/{planName}")
+	@PreAuthorize("hasAuthority('PATIENTS')")
 	public InsurancePlansDTO getPlanByNamee(@PathVariable String planName) {
 		InsurancePlansDTO planDTO = service.getPlanByName(planName);
 		if (planDTO.getPlanName() == null) {
@@ -57,6 +55,7 @@ public class InsurancePlansRestController {
 	}
 
 	@GetMapping("/getallplans")
+	@PreAuthorize("hasAuthority('PATIENTS','ADMIN')")
 	public List<InsurancePlans> getAllPlanDetails() {
 		return service.getAllPlans();
 	}
