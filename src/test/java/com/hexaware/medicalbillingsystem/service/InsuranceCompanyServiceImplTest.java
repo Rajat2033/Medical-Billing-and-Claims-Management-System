@@ -17,7 +17,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import com.hexaware.medicalbillingsystem.dto.InsuranceCompanyDTO;
 import com.hexaware.medicalbillingsystem.entities.InsuranceCompany;
 import com.hexaware.medicalbillingsystem.repository.InsuranceCompanyRepository;
-
+/*
+@Author : Rajat Darvhekar 
+Modified Date : 18-11-2023
+Description : ServiceImpTest for the InsuranceCompany
+*/
 class InsuranceCompanyServiceImplTest {
 
 	@Mock
