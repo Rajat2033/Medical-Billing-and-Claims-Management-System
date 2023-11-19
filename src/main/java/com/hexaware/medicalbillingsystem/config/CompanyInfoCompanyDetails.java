@@ -10,7 +10,11 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.hexaware.medicalbillingsystem.entities.InsuranceCompany;
-
+/*
+@Author :Hema sree
+Modified Date : 16-11-2023
+Description :  Class for CompanyInfoCompanyDetails containing various properties
+*/
 public class CompanyInfoCompanyDetails implements UserDetails {
 
 	/**
