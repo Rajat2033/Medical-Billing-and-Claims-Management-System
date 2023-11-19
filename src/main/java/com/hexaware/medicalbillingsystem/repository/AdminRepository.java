@@ -6,7 +6,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.hexaware.medicalbillingsystem.entities.AdminMedical;
-
+/*
+@Author:Hema sree
+Date:15-11-2023
+Description: Repository class for AdminMadical performing the following properties
+*/	
 @Repository
 public interface AdminRepository extends JpaRepository<AdminMedical, Integer> {
 	
