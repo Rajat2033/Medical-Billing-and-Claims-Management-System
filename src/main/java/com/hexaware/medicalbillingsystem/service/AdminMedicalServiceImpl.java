@@ -9,7 +9,11 @@ import org.springframework.stereotype.Service;
 import com.hexaware.medicalbillingsystem.dto.AdminMedicalDTO;
 import com.hexaware.medicalbillingsystem.entities.AdminMedical;
 import com.hexaware.medicalbillingsystem.repository.AdminRepository;
-
+/*
+@Author:Hema sree
+Date:18-11-2023
+Description:Service class for AdminMedical implenting IAdminMedicalService
+*/	
 @Service
 public class AdminMedicalServiceImpl implements IAdminMedicalService {
 
