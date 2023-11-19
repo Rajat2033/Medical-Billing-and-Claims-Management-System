@@ -10,7 +10,11 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.hexaware.medicalbillingsystem.entities.AdminMedical;
-
+/*
+@Author:Rajat Darvehkar
+Date:18-11-2023
+Description:AdminInfoAdminDetails class implementing UserDetails
+*/	
 public class AdminInfoAdminDetails implements UserDetails{
 
 	
