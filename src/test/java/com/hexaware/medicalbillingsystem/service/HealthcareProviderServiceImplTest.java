@@ -23,7 +23,7 @@ import com.hexaware.medicalbillingsystem.repository.HealthcareProviderRepository
 /*
 @Author : Rajat Darvhekar 
 Modified Date : 18-11-2023
-Description : ServiceImpTest for the HealthcareProvider
+Description : ServiceImpTest class for the HealthcareProvider
 */
 class HealthcareProviderServiceImplTest {
 
