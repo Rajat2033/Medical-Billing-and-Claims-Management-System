@@ -13,7 +13,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-
+ /*
+@Author : Rajat Darvhekar 
+Modified Date : 16-11-2023
+Description :  Class for SecurityConfig  containing various properties
+*/
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
