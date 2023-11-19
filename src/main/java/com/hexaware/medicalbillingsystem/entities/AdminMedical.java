@@ -6,7 +6,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+/*
+@Author:Rajat Darvehkar
+Date:15-11-2023
+Description:Entity class for AdminMadical performing the following properties
+*/	
 @Entity
 public class AdminMedical implements Serializable {
 	/**
