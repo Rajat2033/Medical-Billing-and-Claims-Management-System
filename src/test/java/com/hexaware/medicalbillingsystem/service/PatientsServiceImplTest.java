@@ -17,7 +17,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import com.hexaware.medicalbillingsystem.dto.PatientsDTO;
 import com.hexaware.medicalbillingsystem.entities.Patients;
 import com.hexaware.medicalbillingsystem.repository.PatientRepository;
-
+/*
+@Author : Hema Sree 
+Modified Date : 18-11-2023
+Description : ServiceImpTest class for the Patients
+*/
 class PatientsServiceImplTest {
 	@Mock
 	PatientRepository patientRepositoryMock;
