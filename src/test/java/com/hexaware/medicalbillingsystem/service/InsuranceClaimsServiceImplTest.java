@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 /*
 @Author : Rajat Darvhekar 
 Modified Date : 18-11-2023
-Description : ServiceImpTest for the InsuranceClaims
+Description : ServiceImpTest class for the InsuranceClaims
 */
 class InsuranceClaimsServiceImplTest {
 
