@@ -51,6 +51,7 @@ public class InsuranceCompanyServiceImpl implements IInsuranceCompanyService {
 		company.setCompanyEmail(companydto.getCompanyEmail());
 		company.setCompanyContact(companydto.getCompanyContact());
 		company.setCompanyStartYears(companydto.getCompanyStartYears());
+		logger.info("Existing Insurance Company is Updated !!!!");
 		return repository.save(company);
 	}
 
@@ -81,6 +82,7 @@ public class InsuranceCompanyServiceImpl implements IInsuranceCompanyService {
 	@Override
 	public List<InsuranceCompany> getAllInsuranceCompanyDetails() {
 
+		logger.info("All the insurance Companies Data is fetched!!!!!");
 		return repository.findAll();
 	}
 

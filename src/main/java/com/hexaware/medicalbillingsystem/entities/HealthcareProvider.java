@@ -49,7 +49,7 @@ public class HealthcareProvider implements Serializable {
 	private int providerExperience;
 	private String providerQualification;
 
-	private final String role="PROVIDER";
+	private final static String role="PROVIDER";
 	public HealthcareProvider() {
 		super();
 	}

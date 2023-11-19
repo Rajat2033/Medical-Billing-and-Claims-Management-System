@@ -12,6 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -59,8 +60,8 @@ public class HealthcareProviderRestController {
 		return service.getAllHealthcareProviders();
 	}
 
-	@DeleteMapping("/delete/provider")
-	public String deleteProvider(int providerId) {
+	@DeleteMapping("/delete/provider/{providerId}")
+	public String deleteProvider( @PathVariable int providerId) {
 		service.deleteProvider(providerId);
 		return "Provider with id " + providerId + " is deleted";
 	}

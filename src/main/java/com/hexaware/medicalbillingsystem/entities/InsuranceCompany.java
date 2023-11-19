@@ -39,7 +39,7 @@ public class InsuranceCompany implements Serializable {
 	@NotBlank
 	private String companyContact;
 	private String companyStartYears;
-	private final  String role="COMPANY";
+	private final  static String role="COMPANY";
 
 	public InsuranceCompany() {
 		super();

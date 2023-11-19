@@ -16,15 +16,15 @@ import com.hexaware.medicalbillingsystem.repository.AdminRepository;
 import com.hexaware.medicalbillingsystem.repository.HealthcareProviderRepository;
 import com.hexaware.medicalbillingsystem.repository.InsuranceCompanyRepository;
 import com.hexaware.medicalbillingsystem.repository.PatientRepository;
-<<<<<<< HEAD
+
 @Component
-=======
+
  /*
 @Author : Rajat Darvhekar 
 Modified Date : 16-11-2023
 Description :  Class for   UserInfoUserDetailsService implementing UserDetailsService
 */
->>>>>>> 6b2c2e21e3123b2e194c18296b1349d9a7d2e230
+
 public class UserInfoUserDetailsService implements UserDetailsService {
 
 	@Autowired

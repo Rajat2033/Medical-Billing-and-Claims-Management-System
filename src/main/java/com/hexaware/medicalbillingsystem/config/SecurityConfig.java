@@ -15,18 +15,18 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-<<<<<<< HEAD
+
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.hexaware.medicalbillingsystem.filter.JWTAuthFilter;
 
-=======
+
  /*
 @Author : Rajat Darvhekar 
 Modified Date : 16-11-2023
 Description :  Class for SecurityConfig  containing various properties
 */
->>>>>>> 6b2c2e21e3123b2e194c18296b1349d9a7d2e230
+
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
@@ -49,7 +49,7 @@ public class SecurityConfig {
 						"/api/v1/patients/authenticate", "/api/v1/patients/add/new", "/api/v1/patients/get/allPatients",
 						"/api/v1/provider/authenticate", "/api/v1/provider/add/provider",
 						"/api/v1/companies/authenticate", "/api/v1/companies/add/company",
-						"/api/v1/admin/authenticate","/api/v1/admin/add")
+						"/api/v1/admin/authenticate","/api/v1/admin/add","/api/v1/provider/delete/provider/{providerId}")
 				.permitAll().and().authorizeHttpRequests()
 				.requestMatchers("/api/v1/patients/**", "/api/v1/provider/**", "/api/v1/companies/**",
 						"/api/v1/insuranceplans/**", "/api/v1/insuranceclaims/**","/api/v1/admin/**")

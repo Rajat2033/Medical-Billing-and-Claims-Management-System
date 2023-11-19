@@ -14,7 +14,6 @@ import com.hexaware.medicalbillingsystem.entities.AdminMedical;
 public class AdminInfoAdminDetails implements UserDetails{
 
 	
-	
 	private String adminName;
 	private String adminPassword;
 	private List<GrantedAuthority> authorities;

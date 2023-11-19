@@ -54,7 +54,7 @@ public class InsurancePlansServiceImpl implements IInsurancePlansService {
 		planDTO.setPlanEmi(plans.getPlanEmi());
 		planDTO.setPlanDetails(plans.getPlanDetails());
 	
-		logger.info("Insurance plan "+planName+" is displayed!!!");;
+		logger.info("Insurance plan "+planName+" is displayed!!!");
 		return planDTO;
 
 	}
