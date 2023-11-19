@@ -1,5 +1,9 @@
 package com.hexaware.medicalbillingsystem.dto;
-
+/*
+	@Author :  Rajat Darvehkar
+	Modified Date : 06-11-2023
+	Description :DTO class for AuthRequest containing various properties
+	*/
 public class AuthRequest {
 
 	private String username;

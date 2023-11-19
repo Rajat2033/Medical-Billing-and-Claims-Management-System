@@ -16,8 +16,16 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+<<<<<<< HEAD
 
 @Component
+=======
+/*
+@Author : Rajat Darvhekar 
+Modified Date : 16-11-2023
+Description : Class for JWTAuthFilter extending OncePerRequestFilter
+*/
+>>>>>>> 6b2c2e21e3123b2e194c18296b1349d9a7d2e230
 public class JWTAuthFilter extends OncePerRequestFilter{
 
 	@Autowired
