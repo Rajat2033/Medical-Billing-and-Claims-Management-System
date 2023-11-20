@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 
 import com.hexaware.medicalbillingsystem.dto.InvoiceDetailsDTO;
 import com.hexaware.medicalbillingsystem.entities.InvoiceDetails;
+import com.hexaware.medicalbillingsystem.entities.Patients;
 import com.hexaware.medicalbillingsystem.exceptions.NoSuchInvoiceGeneratedException;
 import com.hexaware.medicalbillingsystem.repository.InvoiceDetailsRepository;
+import com.hexaware.medicalbillingsystem.repository.PatientRepository;
 
 /*
 @Author :   Rajat Darvhekar
@@ -24,33 +26,37 @@ public class InvoiceDetailsServiceImpl implements IInvoiceDetailsService {
 	Logger logger = LoggerFactory.getLogger(InvoiceDetailsServiceImpl.class);
 
 	@Autowired
-	private InvoiceDetailsRepository repository;
+	private InvoiceDetailsRepository invoiceRepository;
+	
+	@Autowired
+	private PatientRepository patientRepository;
 
 	@Override
-	public InvoiceDetails generateInvoice(InvoiceDetailsDTO detailsDTO) {
+	public InvoiceDetails generateInvoice(InvoiceDetailsDTO detailsDTO,long patientId) {
 		InvoiceDetails details = new InvoiceDetails();
+		Patients patients=patientRepository.findById(patientId).orElse(new Patients());
 		details.setInvoiceDate(detailsDTO.getInvoiceDate());
 		details.setInvoiceDueDate(detailsDTO.getInvoicedueDate());
 		details.setInvoiceTax(detailsDTO.getInvoiceTax());
-		
 		details.setConsultationFee(detailsDTO.getConsultationFee());
 		details.setDiagnosticTestsFee(detailsDTO.getDiagnosticTestsFee());
 		details.setDiagnosticScanFee(detailsDTO.getDiagnosticScanFee());
 		details.setInvoiceTotalAmount(detailsDTO.getInvoiceTotalAmount());
 		details.setTotalBillAmount(detailsDTO.getTotalBillAmount());
-		logger.info("Invoice Generated Successfully!!!!!!!");
-		return repository.save(details);
+		details.setPatient(patients);
+		logger.info("Invoice Generated Successfully for patient "+patientId+" !!!!!!!");
+		return invoiceRepository.save(details);
 	}
 
 	@Override
 	public List<InvoiceDetails> getAllGeneratedInvoice() {
 		logger.info("All the Invoice Generated Details Fetched Successfully!!!!!");
-		return repository.findAll();
+		return invoiceRepository.findAll();
 	}
 
 	@Override
 	public InvoiceDetailsDTO getInvoiceById(int invoiceId) {
-		InvoiceDetails details = repository.findById(invoiceId)
+		InvoiceDetails details = invoiceRepository.findById(invoiceId)
 				.orElseThrow(() -> new NoSuchInvoiceGeneratedException(HttpStatus.NO_CONTENT,
 						"No such Invoice with Id :" + invoiceId + " Found"));
 		InvoiceDetailsDTO detailsDTO = new InvoiceDetailsDTO();

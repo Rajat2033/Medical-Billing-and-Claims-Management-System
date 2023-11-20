@@ -26,11 +26,11 @@ public class InvoiceDetailsRestController {
 	@Autowired
 	private IInvoiceDetailsService service;
 	
-	@PostMapping("/add/newinvoice")
+	@PostMapping("/add/newinvoice/{patientId}")
 	@PreAuthorize("hasAuthority('PROVIDER')")
-	public InvoiceDetails generateNewInvoice(@RequestBody InvoiceDetailsDTO detailsDTO)
+	public InvoiceDetails generateNewInvoice(@RequestBody InvoiceDetailsDTO detailsDTO,@PathVariable long patientId)
 	{
-		return service.generateInvoice(detailsDTO);
+		return service.generateInvoice(detailsDTO,patientId);
 	}
 	
 	@GetMapping("/getinvoicebyid/{invoiceId}")

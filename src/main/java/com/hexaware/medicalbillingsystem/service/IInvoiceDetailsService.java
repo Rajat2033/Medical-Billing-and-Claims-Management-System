@@ -11,7 +11,7 @@ Description : Interface of  InvoiceDetailsService performing the following opera
 */
 public interface IInvoiceDetailsService {
 	
-	public InvoiceDetails generateInvoice(InvoiceDetailsDTO detailsDTO);
+	public InvoiceDetails generateInvoice(InvoiceDetailsDTO detailsDTO,long patientId);
 	
 	public List<InvoiceDetails> getAllGeneratedInvoice();
 	

@@ -2,17 +2,14 @@ package com.hexaware.medicalbillingsystem.entities;
 
 import java.io.Serializable;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+
 import jakarta.validation.constraints.Email;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 /*
 @Author :  Hema Sree 
 Modified Date : 26-10-2023
@@ -42,9 +39,7 @@ public class Patients implements Serializable {
 	@NotBlank
 	private String patientDisease;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "planId")
-	private InsurancePlans plans;
+
 
 	private final static String role="PATIENTS";
 	public Patients() {
@@ -52,10 +47,11 @@ public class Patients implements Serializable {
 
 	}
 
-	public Patients(long patientId, @NotBlank String patientName, @Email String patientEmail,
-			@Pattern(regexp = "^[a-zA-Z0-9]{8}", message = "Letter must be 8") String patientPassword,
+	
+
+	public Patients(long patientId, @NotBlank String patientName, @Email String patientEmail, String patientPassword,
 			String patientDOB, @NotBlank String patientGender, long patientContact, String patientAddress,
-			@NotBlank String patientDisease, InsurancePlans plans) {
+			@NotBlank String patientDisease) {
 		super();
 		this.patientId = patientId;
 		this.patientName = patientName;
@@ -66,8 +62,9 @@ public class Patients implements Serializable {
 		this.patientContact = patientContact;
 		this.patientAddress = patientAddress;
 		this.patientDisease = patientDisease;
-		this.plans = plans;
 	}
+
+
 
 	public String getRole() {
 		return role;
@@ -145,20 +142,13 @@ public class Patients implements Serializable {
 		this.patientDisease = patientDisease;
 	}
 
-	public InsurancePlans getPlans() {
-		return plans;
-	}
-
-	public void setPlans(InsurancePlans plans) {
-		this.plans = plans;
-	}
 
 	@Override
 	public String toString() {
 		return "Patients [patientId=" + patientId + ", patientName=" + patientName + ", patientEmail=" + patientEmail
 				+ ", patientPassword=" + patientPassword + ", patientDOB=" + patientDOB + ", patientGender="
 				+ patientGender + ", patientContact=" + patientContact + ", patientAddress=" + patientAddress
-				+ ", patientDisease=" + patientDisease + ", plans=" + plans + "]";
+				+ ", patientDisease=" + patientDisease + "]";
 	}
 
 }
