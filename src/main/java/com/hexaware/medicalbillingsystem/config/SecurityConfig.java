@@ -49,7 +49,8 @@ public class SecurityConfig {
 						"/api/v1/patients/authenticate", "/api/v1/patients/add/new", "/api/v1/patients/get/allPatients",
 						"/api/v1/provider/authenticate", "/api/v1/provider/add/provider",
 						"/api/v1/companies/authenticate", "/api/v1/companies/add/company",
-						"/api/v1/admin/authenticate","/api/v1/admin/add","/api/v1/provider/delete/provider/{providerId}")
+						"/api/v1/admin/authenticate","/api/v1/admin/add","/api/v1/provider/delete/provider/{providerId}",
+						"/api/v1/insuranceclaims/add/newclaim","/api/v1/insuranceclaims/getallclaims/{claimStatus}")
 				.permitAll().and().authorizeHttpRequests()
 				.requestMatchers("/api/v1/patients/**", "/api/v1/provider/**", "/api/v1/companies/**",
 						"/api/v1/insuranceplans/**", "/api/v1/insuranceclaims/**","/api/v1/admin/**")

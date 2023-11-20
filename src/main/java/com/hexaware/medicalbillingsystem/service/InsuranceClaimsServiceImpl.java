@@ -24,21 +24,9 @@ public class InsuranceClaimsServiceImpl implements IInsuranceClaimsService {
 
 	Logger logger = LoggerFactory.getLogger(InsuranceClaimsServiceImpl.class);
 	@Autowired
-	InsuranceClaimsRepository repository;
+	private InsuranceClaimsRepository repository;
 
-	@Override
-	public InsuranceClaimsDTO getTotalPendingInsuranceClaims(String claimStatus) {
-
-		logger.info("Got all the pending claims!!!1");
-		return repository.getTotalPendingInsuranceClaims(claimStatus);
-	}
-
-	@Override
-	public InsuranceClaimsDTO getTotalApprovedClaims(String claimStatus) {
-
-		logger.info("Got all the approved claims till now!!!!");
-		return repository.getTotalApprovedClaims(claimStatus);
-	}
+	
 
 	@Override
 	public InsuranceClaimsDTO getById(long claimId) {
@@ -89,6 +77,12 @@ public class InsuranceClaimsServiceImpl implements IInsuranceClaimsService {
 
 		logger.info("Fetched All the data!!!!");
 		return repository.findAll();
+	}
+
+	@Override
+	public List<InsuranceClaims> getSortedInsuranceClaims(String claimStatus) {
+		
+		return repository.getSortedInsuranceclaims(claimStatus);
 	}
 
 }

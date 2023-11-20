@@ -38,6 +38,7 @@ public class InsurancePlansRestController {
 	}
 
 	@DeleteMapping("/delete/plan/{planId}")
+	@PreAuthorize("hasAuthority('COMPANY')")
 	public void deletePlans(@PathVariable int planId) {
 		service.deleteInsurancePlan(planId);
 		

@@ -74,7 +74,7 @@ public class PatientsRestController {
 	}
 
 	@DeleteMapping("/delete/patient/{patientId}")
-
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public String deletePatients(@PathVariable int patientId) {
 
 		service.deletePatients(patientId);
@@ -82,7 +82,7 @@ public class PatientsRestController {
 	}
 
 	@GetMapping("/getbyname/{patientName}")
-	@PreAuthorize("hasAuthority('PATIENTS')")
+	@PreAuthorize("hasAuthority('PROVIDER')")
 	public PatientsDTO getByPatientName(@PathVariable String patientName) {
 		PatientsDTO patientdto = service.getPatientByName(patientName);
 		if (patientdto.getPatientName() == null) {
@@ -94,6 +94,7 @@ public class PatientsRestController {
 	}
 
 	@GetMapping("/get/allPatients")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public List<Patients> getAllPatients() {
 		return service.getAllPatients();
 	}

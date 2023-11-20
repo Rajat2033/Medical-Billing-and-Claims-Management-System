@@ -55,12 +55,13 @@ public class InsuranceCompanyRestController {
 	}
 
 	@DeleteMapping("/delete/companyById/{companyId}")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public void deleteExistingCompany(@PathVariable int companyId) {
 		service.deleteCompanyById(companyId);
 	}
 
 	@GetMapping("/getbycompanyname/{companyName}")
-	@PreAuthorize("hasAuthority('COMPANY')")
+	@PreAuthorize("hasAuthority('PATIENTS')")
 	public InsuranceCompanyDTO getCompanyByName(@PathVariable String companyName) {
 		return service.getCompanyByName(companyName);
 
@@ -68,6 +69,7 @@ public class InsuranceCompanyRestController {
 
 
 	@GetMapping("/getallcompaniesdata")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public List<InsuranceCompany> getAllInsuranceCompanies() {
 		return service.getAllInsuranceCompanyDetails();
 	}

@@ -19,9 +19,7 @@ public interface IInsuranceClaimsService {
  
 	public InsuranceClaimsDTO getById(long claimId);
 	 
-	public InsuranceClaimsDTO getTotalPendingInsuranceClaims(String claimStatus);
-
-	public InsuranceClaimsDTO getTotalApprovedClaims(String claimStatus);
+	public List<InsuranceClaims> getSortedInsuranceClaims(String claimStatus);
 	
 	public List<InsuranceClaims> getAllInsuranceClaims();
 
