@@ -37,6 +37,7 @@ public class InvoiceDetailsServiceImpl implements IInvoiceDetailsService {
 		details.setDiagnosticTestsFee(detailsDTO.getDiagnosticTestsFee());
 		details.setDiagnosticScanFee(detailsDTO.getDiagnosticScanFee());
 		details.setInvoiceTotalAmount(detailsDTO.getInvoiceTotalAmount());
+		details.setTotalBillAmount(detailsDTO.getTotalBillAmount());
 		logger.info("Invoice Generated Successfully!!!!!!!");
 		return repository.save(details);
 	}

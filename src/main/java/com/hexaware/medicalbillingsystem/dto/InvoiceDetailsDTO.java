@@ -11,11 +11,21 @@ public class InvoiceDetailsDTO {
 	private int invoiceId;
 	private LocalDate invoiceDate;
 	private LocalDate invoicedueDate;
-	private int invoiceTax;
+	private double invoiceTax;
 	private double consultationFee;
 	private double diagnosticTestsFee;
 	private double diagnosticScanFee;
 	private double invoiceTotalAmount;
+	private double totalBillAmount;
+
+	public double getTotalBillAmount() {
+		return totalBillAmount;
+	}
+
+	public void setTotalBillAmount(double totalBillAmount) {
+
+		this.totalBillAmount = invoiceTotalAmount + (invoiceTotalAmount * (invoiceTax / 100));
+	}
 
 	public void setInvoiceTotalAmount(double invoiceTotalAmount) {
 		this.invoiceTotalAmount = consultationFee + diagnosticScanFee + diagnosticTestsFee;
@@ -45,11 +55,11 @@ public class InvoiceDetailsDTO {
 		this.invoicedueDate = invoicedueDate;
 	}
 
-	public int getInvoiceTax() {
+	public double getInvoiceTax() {
 		return invoiceTax;
 	}
 
-	public void setInvoiceTax(int invoiceTax) {
+	public void setInvoiceTax(double invoiceTax) {
 		this.invoiceTax = invoiceTax;
 	}
 
