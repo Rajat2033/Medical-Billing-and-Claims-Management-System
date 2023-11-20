@@ -2,6 +2,8 @@ package com.hexaware.medicalbillingsystem.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -26,6 +28,7 @@ Description : Controller  InsurancePlans
 @RequestMapping("/api/v1/insuranceplans")
 public class InsurancePlansRestController {
 
+	Logger logger=LoggerFactory.getLogger(InsuranceCompanyRestController.class);
 
 	@Autowired
 	private IInsurancePlansService service;
@@ -41,6 +44,7 @@ public class InsurancePlansRestController {
 	@PreAuthorize("hasAuthority('COMPANY')")
 	public void deletePlans(@PathVariable int planId) {
 		service.deleteInsurancePlan(planId);
+		logger.info("Insurance plan with id "+planId+" is deleted!!!");
 		
 	}
 
@@ -56,7 +60,7 @@ public class InsurancePlansRestController {
 	}
 
 	@GetMapping("/getallplans")
-	@PreAuthorize("hasAuthority('PATIENTS','ADMIN')")
+	@PreAuthorize("hasAuthority('PATIENTS')")
 	public List<InsurancePlans> getAllPlanDetails() {
 		return service.getAllPlans();
 	}

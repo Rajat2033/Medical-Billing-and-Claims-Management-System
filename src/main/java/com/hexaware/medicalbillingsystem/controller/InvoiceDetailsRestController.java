@@ -27,7 +27,7 @@ public class InvoiceDetailsRestController {
 	private IInvoiceDetailsService service;
 	
 	@PostMapping("/add/newinvoice")
-//	@PreAuthorize("hasAuthority('PROVIDER')")
+	@PreAuthorize("hasAuthority('PROVIDER')")
 	public InvoiceDetails generateNewInvoice(@RequestBody InvoiceDetailsDTO detailsDTO)
 	{
 		return service.generateInvoice(detailsDTO);

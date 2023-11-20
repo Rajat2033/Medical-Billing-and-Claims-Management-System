@@ -30,6 +30,7 @@ public class InsuranceClaimsRestController {
 
 	@PostMapping("/add/newclaim")
 
+	@PreAuthorize("hasAuthority('PATIENTS')")
 	public InsuranceClaims insertNewClaim(@RequestBody InsuranceClaimsDTO claimDTO) {
 		return claimService.insertClaims(claimDTO);
 	}

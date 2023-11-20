@@ -98,7 +98,7 @@ public class AdminRestController {
 	public List<InsurancePlans> getAllInsurancePlans() {
 		return planService.getAllPlans();
 	}
-
+	
 	
 	@PostMapping("/authenticate")
 	public String authenticateAndGenerateToken(@RequestBody AuthRequest authReq) {
