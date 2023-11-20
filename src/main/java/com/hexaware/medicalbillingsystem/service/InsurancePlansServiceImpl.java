@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.hexaware.medicalbillingsystem.dto.InsurancePlansDTO;
 import com.hexaware.medicalbillingsystem.entities.InsurancePlans;
 import com.hexaware.medicalbillingsystem.repository.InsurancePlansRepository;
+
 /*
 @Author :   Rajat Darvhekar  
 Modified Date : 02-11-2023
@@ -18,7 +19,7 @@ Description :Service Implementation class for InsurancePlansServiceImpl implemen
 @Service
 public class InsurancePlansServiceImpl implements IInsurancePlansService {
 
-	Logger logger=LoggerFactory.getLogger(InsurancePlansServiceImpl.class);
+	Logger logger = LoggerFactory.getLogger(InsurancePlansServiceImpl.class);
 	@Autowired
 	private InsurancePlansRepository repository;
 
@@ -37,8 +38,7 @@ public class InsurancePlansServiceImpl implements IInsurancePlansService {
 
 	@Override
 	public void deleteInsurancePlan(int planId) {
-
-		logger.warn("Insurance plans "+planId+" is deleted!!!");
+		logger.warn("Insurance plans " + planId + " is deleted!!!");
 		repository.deleteById(planId);
 
 	}
@@ -53,21 +53,19 @@ public class InsurancePlansServiceImpl implements IInsurancePlansService {
 		planDTO.setPlanCoverAmount(plans.getPlanCoverAmount());
 		planDTO.setPlanEmi(plans.getPlanEmi());
 		planDTO.setPlanDetails(plans.getPlanDetails());
-	
-		logger.info("Insurance plan "+planName+" is displayed!!!");
+		logger.info("Insurance plan " + planName + " is displayed!!!");
 		return planDTO;
 
 	}
 
 	@Override
 	public List<InsurancePlans> getAllPlans() {
-
+		logger.info("All the InsurancePlans are displayed!!!!");
 		return repository.findAll();
 	}
 
 	@Override
 	public InsurancePlans updateInsurancePlans(InsurancePlansDTO plansdto) {
-
 		InsurancePlans plans = new InsurancePlans();
 		plans.setPlanId(plansdto.getPlanId());
 		plans.setPlanName(plansdto.getPlanName());
@@ -75,7 +73,6 @@ public class InsurancePlansServiceImpl implements IInsurancePlansService {
 		plans.setPlanCoverAmount(plansdto.getPlanCoverAmount());
 		plans.setPlanEmi(plansdto.getPlanEmi());
 		plans.setPlanDetails(plansdto.getPlanDetails());
-
 		logger.warn("Insurance plan is updated!!!");
 		return repository.save(plans);
 	}

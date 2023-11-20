@@ -23,9 +23,6 @@ public class PatientsDTO {
 		super();
 
 	}
-
-	
-
 	public long getPatientId() {
 		return patientId;
 	}

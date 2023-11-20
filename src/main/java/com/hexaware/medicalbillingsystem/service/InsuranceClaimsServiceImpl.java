@@ -31,12 +31,10 @@ public class InsuranceClaimsServiceImpl implements IInsuranceClaimsService {
 	@Override
 	public InsuranceClaimsDTO getById(long claimId) {
 		InsuranceClaims claim = repository.findById(claimId).orElse(new InsuranceClaims());
-
 		InsuranceClaimsDTO claimdto = new InsuranceClaimsDTO();
 		claimdto.setClaimId(claim.getClaimId());
 		claimdto.setClaimAmount(claim.getClaimAmount());
 		claimdto.setClaimStatus(claim.getClaimStatus());
-
 		claimdto.setInvoiceAmount(claim.getInvoiceAmount());
 		logger.info("Fetched Claims for id " + claimId);
 		return claimdto;
@@ -48,7 +46,6 @@ public class InsuranceClaimsServiceImpl implements IInsuranceClaimsService {
 		claims.setClaimAmount(claimDTO.getClaimAmount());
 		claims.setClaimStatus(claimDTO.getClaimStatus());
 		claims.setInvoiceAmount(claimDTO.getInvoiceAmount());
-		
 		logger.info("Claim is proceeded!!!");
 		return repository.save(claims);
 	}
@@ -59,10 +56,8 @@ public class InsuranceClaimsServiceImpl implements IInsuranceClaimsService {
 		InsuranceClaims claims = new InsuranceClaims();
 		if (optionalClaims.isPresent()) {
 			claims = optionalClaims.get();
-
 			claims.setClaimAmount(claimsDTO.getClaimAmount());
 			claims.setClaimStatus(claimsDTO.getClaimStatus());
-			
 			claims.setInvoiceAmount(claimsDTO.getInvoiceAmount());
 		} else {
 			logger.error("Claim Id Not Found!!!!");
@@ -81,7 +76,7 @@ public class InsuranceClaimsServiceImpl implements IInsuranceClaimsService {
 
 	@Override
 	public List<InsuranceClaims> getSortedInsuranceClaims(String claimStatus) {
-		
+		logger.info(" claims with status "+	claimStatus+"are  fetched!!!");
 		return repository.getSortedInsuranceclaims(claimStatus);
 	}
 

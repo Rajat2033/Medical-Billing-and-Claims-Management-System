@@ -31,7 +31,7 @@ public class InsurancePlansRestController {
 	private IInsurancePlansService service;
 
 
-	@PostMapping(path="/add/plan",consumes = "application/json",produces="application/json")
+	@PostMapping("/add/plan")
 	@PreAuthorize("hasAuthority('COMPANY')")
 	public InsurancePlans addNewPlan(@RequestBody InsurancePlansDTO plansdto) {
 		return service.addInsurancePlan(plansdto);

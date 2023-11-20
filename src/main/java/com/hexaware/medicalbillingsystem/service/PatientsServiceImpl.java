@@ -37,7 +37,6 @@ public class PatientsServiceImpl implements IPatientsService {
 		patient.setPatientContact(patientsdto.getPatientContact());
 		patient.setPatientAddress(patientsdto.getPatientAddress());
 		patient.setPatientDisease(patientsdto.getPatientDisease());
-		
 		logger.info("New patient/user registered with us!!!");
 		return repository.save(patient);
 	}
@@ -54,6 +53,7 @@ public class PatientsServiceImpl implements IPatientsService {
 		patient.setPatientContact(patientsdto.getPatientContact());
 		patient.setPatientAddress(patientsdto.getPatientAddress());
 		patient.setPatientDisease(patientsdto.getPatientDisease());
+		logger.warn("Patient with id:"+patient.getPatientId()+" is updated!!!!");
 		return repository.save(patient);
 	}
 
@@ -77,13 +77,13 @@ public class PatientsServiceImpl implements IPatientsService {
 		patientdto.setPatientContact(patient.getPatientContact());
 		patientdto.setPatientAddress(patient.getPatientAddress());
 		patientdto.setPatientDisease(patient.getPatientDisease());
-
+		logger.info("Patient with name:"+patientName+" is fetched!!!");
 		return patientdto;
 	}
 
 	@Override
 	public List<Patients> getAllPatients() {
-
+		logger.info("All the Patients Data is received!!!");
 		return repository.findAll();
 	}
 

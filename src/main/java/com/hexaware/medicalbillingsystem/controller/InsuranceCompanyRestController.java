@@ -43,12 +43,12 @@ public class InsuranceCompanyRestController {
 	@Autowired
 	private IInsuranceCompanyService service;
 
-	@PostMapping(path = "/add/company", consumes = "application/json", produces = "application/json")
+	@PostMapping("/add/company")
 	public InsuranceCompany addNewCompany(@RequestBody InsuranceCompanyDTO companyDTO) {
 		return service.addCompany(companyDTO);
 	}
 
-	@PutMapping(path = "/update/company", consumes = "application/json", produces = "application/json")
+	@PutMapping("/update/company")
 	@PreAuthorize("hasAuthority('COMPANY')")
 	public InsuranceCompany updateExistingCompany(@RequestBody InsuranceCompanyDTO companyDTO) {
 		return service.updateCompany(companyDTO);

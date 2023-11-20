@@ -12,8 +12,8 @@ public class InsuranceClaimsDTO {
 	private double claimAmount;
 	private String claimStatus;
 	private double invoiceAmount;
-	
 
+	
 	public long getClaimId() {
 		return claimId;
 	}
@@ -39,8 +39,6 @@ public class InsuranceClaimsDTO {
 	}
 
 	
-
-
 	public double getInvoiceAmount() {
 		return invoiceAmount;
 	}

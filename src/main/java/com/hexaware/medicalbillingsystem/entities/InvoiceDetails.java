@@ -28,21 +28,21 @@ public class InvoiceDetails {
 	private LocalDate invoiceDate;
 	private LocalDate invoiceDueDate;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "patient_Id")
-	private Patients patient;
+	
 
 	@NotNull
 	private int invoiceTax;
-
-	
-	private double invoiceTotalAmount;
 	@DecimalMin(value="1000.00")
 	@DecimalMax(value="8000.00")
 	private double consultationFee;
 	private double diagnosticTestsFee;
 	private double diagnosticScanFee;
 
+	private double invoiceTotalAmount;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "patient_Id")
+	private Patients patient;
 	public int getInvoiceId() {
 		return invoiceId;
 	}
@@ -78,6 +78,7 @@ public class InvoiceDetails {
 	}
 	public void setInvoiceTotalAmount(double invoiceTotalAmount) {
 		this.invoiceTotalAmount = invoiceTotalAmount;
+	
 	}
 	public double getConsultationFee() {
 		return consultationFee;

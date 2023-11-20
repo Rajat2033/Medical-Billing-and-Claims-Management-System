@@ -8,7 +8,7 @@ import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 /*
-@Author :Hema sree
+@Author :Rajat Darvhekar
 Modified Date : 16-11-2023
 Description :  Class for  OpenAPI30Configuration containing various properties
 */
