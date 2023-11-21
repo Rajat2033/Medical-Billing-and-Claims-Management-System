@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Pattern;
 /*
 @Author:Rajat Darvehkar
 Date:15-11-2023
@@ -21,6 +22,7 @@ public class AdminMedical implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int adminId;
 	private String adminName;
+	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "Letter must be 8")//Rajat@ss
 	private String adminPassword;
 	private final static String role = "ADMIN";
 

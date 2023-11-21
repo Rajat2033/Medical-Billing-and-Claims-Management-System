@@ -6,15 +6,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
 import jakarta.validation.constraints.Email;
-
 import jakarta.validation.constraints.NotBlank;
 /*
 @Author :  Hema Sree 
 Modified Date : 26-10-2023
 Description : Entity class for Patients containing various properties
 */
+import jakarta.validation.constraints.Pattern;
+
 
 @Entity
 public class Patients implements Serializable {
@@ -29,11 +29,12 @@ public class Patients implements Serializable {
 	private String patientName;
 	@Email
 	private String patientEmail;
-//	@Pattern(regexp = "^[a-zA-Z0-9]{8}", message = "Letter must be 8")
+	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "Letter must be 8")//Rajat@ss
 	private String patientPassword;
 	private String patientDOB;
 	@NotBlank
 	private String patientGender;
+	
 	private long patientContact;
 	private String patientAddress;
 	@NotBlank

@@ -2,6 +2,7 @@ package com.hexaware.medicalbillingsystem.entities;
 
 import java.io.Serializable;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -35,8 +36,8 @@ public class InsuranceClaims implements Serializable {
 	@DecimalMin(value = "12000.00")
 	@DecimalMax(value = "100000.00")
 	private double invoiceAmount;
-	@OneToOne
-	@JoinColumn(name = "patient_Id", referencedColumnName = "patientId")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "patient_Id")
 	private Patients patient;
 
 	@ManyToOne(fetch = FetchType.LAZY)

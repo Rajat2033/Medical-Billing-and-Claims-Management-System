@@ -31,7 +31,7 @@ public class InsuranceCompany implements Serializable {
 	@NotNull
 	private String companyName;
 
-//	@Pattern(regexp = "[a-zA-Z0-9]{5}", message = "Letter must be 5")
+	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "Letter must be 8")//Rajat@ss
 	private String companyPassword;
 	@Email
 	private String companyEmail;
